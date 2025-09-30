@@ -291,6 +291,9 @@ AMERICAN_FOOD_GUIDE = [
         "special_notes": "Choose low-fat or fat-free dairy products"
     }
 ]
+
+# Mock data for Canadian grocery stores
+CANADIAN_STORES = [
     {"name": "Loblaws Superstore", "chain": "Loblaws", "address": "123 King Street, Toronto, ON", "latitude": 43.6532, "longitude": -79.3832, "phone": "(416) 555-0123"},
     {"name": "Metro Plus", "chain": "Metro", "address": "456 Queen Street, Toronto, ON", "latitude": 43.6542, "longitude": -79.3822, "phone": "(416) 555-0124"},
     {"name": "Food Basics", "chain": "Food Basics", "address": "789 Dundas Street, Toronto, ON", "latitude": 43.6552, "longitude": -79.3812, "phone": "(416) 555-0125"},
