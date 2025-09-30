@@ -83,6 +83,11 @@ class FlyerScrapingStatus(BaseModel):
     items_found: int
     error_message: Optional[str] = None
 
+class EmailGroceryListRequest(BaseModel):
+    email: EmailStr
+    grocery_list_data: Dict[str, Any]
+    user_name: Optional[str] = None
+
 class StoreLocation(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
