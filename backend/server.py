@@ -106,6 +106,16 @@ class SaleItem(BaseModel):
     unit: str = "each"
     valid_until: datetime
 
+class WeeklyFlyer(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    store_chain: str
+    store_location: str
+    flyer_url: Optional[str] = None
+    valid_from: datetime
+    valid_until: datetime
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    items: List[SaleItem] = []
+
 class Recipe(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
