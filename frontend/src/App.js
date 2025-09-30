@@ -9,7 +9,7 @@ import { Label } from './components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './components/ui/select';
 import { Checkbox } from './components/ui/checkbox';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './components/ui/dialog';
-import { MapPin, ShoppingCart, ChefHat, DollarSign, Clock, Users, User, Settings } from 'lucide-react';
+import { MapPin, ShoppingCart, ChefHat, DollarSign, Clock, Users, User, Settings, ExternalLink } from 'lucide-react';
 import { Toaster } from './components/ui/sonner';
 import { toast } from 'sonner';
 import './App.css';
