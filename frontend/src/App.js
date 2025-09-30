@@ -548,10 +548,10 @@ const Home = () => {
                         </div>
                         {store.price_match_policy?.has_price_match && (
                           <div className="mt-2">
-                            <p className="text-xs text-green-700 font-medium">
+                            <p className="text-xs text-emerald-700 font-medium">
                               {store.price_match_policy.policy_name}
                             </p>
-                            <p className="text-xs text-gray-600 mt-1">
+                            <p className="text-xs text-emerald-600 mt-1">
                               {store.price_match_policy.description}
                             </p>
                           </div>
