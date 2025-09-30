@@ -484,7 +484,9 @@ CANADIAN_STORES = [
             "match_percentage": 100,
             "additional_discount": 3
         },
-        "flyer_url": "https://www.nofrills.ca/print-flyer"
+        "flyer_url": "https://www.nofrills.ca/print-flyer",
+        "logo_url": "https://via.placeholder.com/48x48/FFCC00/000000?text=VM",
+        "brand_color": "#FFCC00"
     }
 ]
 
