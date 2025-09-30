@@ -675,11 +675,14 @@ const Home = () => {
         {currentStep === 'recipes' && generatedRecipes.length > 0 && (
           <div data-testid="recipes-section">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold">
-                AI-Generated Recipes Using Sale Ingredients
+              <h2 className="text-2xl font-bold text-emerald-800">
+                Choose Your Favorite Recipes
               </h2>
+              <p className="text-lg text-emerald-700 mt-2 mb-1">
+                Select the meals you'd like to cook this week
+              </p>
               {userProfile && (
-                <p className="text-sm text-gray-600 mt-2">
+                <p className="text-sm text-emerald-600 mt-2">
                   ✨ Personalized for {userProfile.name || 'you'} • 
                   {userProfile.dietary_preferences.length > 0 && (
                     <span> {userProfile.dietary_preferences.join(', ')} • </span>
@@ -687,6 +690,12 @@ const Home = () => {
                   {userProfile.household_size} people
                 </p>
               )}
+              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-3 mt-4 max-w-2xl mx-auto">
+                <p className="text-sm text-emerald-700">
+                  💡 <strong>Tip:</strong> Click on any recipe card to select it, then we'll create your optimized grocery list with the best prices!
+                </p>
+              </div>
+            </div>
             </div>
             <div className="grid lg:grid-cols-2 gap-6 mb-8">
               {generatedRecipes.map((recipe) => (
