@@ -708,12 +708,12 @@ async def generate_recipes(request: Dict[str, Any]):
 
 @api_router.post("/grocery-list/generate", response_model=GroceryList)
 async def generate_grocery_list(request: Dict[str, Any]):
-    """Generate optimized grocery list based on selected recipes and nearby stores"""
+    """Generate optimized grocery list based on selected recipes and nearby stores with price matching"""
     user_location = UserLocation(**request['user_location'])
     selected_recipes = request['selected_recipes']
     servings_multiplier = request.get('servings_multiplier', 1.0)
     
-    # Get nearby stores
+    # Get nearby stores with price match info
     nearby_stores = []
     for store_data in CANADIAN_STORES:
         distance = calculate_distance(
@@ -724,27 +724,79 @@ async def generate_grocery_list(request: Dict[str, Any]):
             store = StoreLocation(**store_data, distance_km=round(distance, 1))
             nearby_stores.append(store)
     
-    # Generate grocery list items (simplified for MVP)
+    # Sort by distance
+    nearby_stores.sort(key=lambda x: x.distance_km)
+    
+    # Create a comprehensive price comparison across all stores
+    all_store_prices = {}
+    for store in nearby_stores:
+        for item_data in MOCK_SALE_ITEMS:
+            item_id = item_data['name']
+            if item_id not in all_store_prices:
+                all_store_prices[item_id] = []
+            
+            all_store_prices[item_id].append({
+                'store': store,
+                'original_price': item_data['original_price'],
+                'sale_price': item_data['sale_price'],
+                'item_data': item_data
+            })
+    
+    # Generate optimized grocery list using price matching
     items = []
     total_cost = 0.0
     total_savings = 0.0
     
-    for item_data in MOCK_SALE_ITEMS[:6]:  # Limit to first 6 items for demo
-        if nearby_stores:
-            store = nearby_stores[0]  # Use closest store for simplicity
-            item = GroceryListItem(
-                ingredient=item_data['name'],
-                quantity=f"{servings_multiplier:.1f} {item_data['unit']}",
-                store_name=store.name,
-                store_id=store.id,
-                price=item_data['original_price'] * servings_multiplier,
-                is_on_sale=True,
-                sale_price=item_data['sale_price'] * servings_multiplier
-            )
-            items.append(item)
-            total_cost += item.sale_price if item.sale_price else item.price
-            if item.is_on_sale and item.sale_price:
-                total_savings += (item.price - item.sale_price)
+    for item_id, store_prices in all_store_prices.items():
+        if len(items) >= 8:  # Limit for demo
+            break
+            
+        # Find the best price across all stores
+        best_price_info = min(store_prices, key=lambda x: x['sale_price'])
+        best_price = best_price_info['sale_price']
+        best_original_price = best_price_info['original_price']
+        
+        # Find the best store to shop at (considering price matching)
+        recommended_store = None
+        final_price = best_price
+        price_match_used = False
+        
+        for store in nearby_stores:
+            if store.price_match_policy.get('has_price_match', False):
+                # This store can price match, so we can get the best price here
+                additional_discount = store.price_match_policy.get('additional_discount', 0)
+                if additional_discount > 0:
+                    # Store beats competitor prices by additional percentage
+                    potential_price = best_price * (1 - additional_discount / 100)
+                    if potential_price < final_price:
+                        final_price = potential_price
+                        recommended_store = store
+                        price_match_used = True
+                        break
+                else:
+                    # Store matches prices exactly
+                    recommended_store = store
+                    price_match_used = True
+                    break
+        
+        # If no price matching store found, use the store with the actual best price
+        if not recommended_store:
+            recommended_store = best_price_info['store']
+        
+        # Create grocery list item
+        item = GroceryListItem(
+            ingredient=item_id,
+            quantity=f"{servings_multiplier:.1f} {best_price_info['item_data']['unit']}",
+            store_name=f"{recommended_store.name}{' (Price Match)' if price_match_used else ''}",
+            store_id=recommended_store.id,
+            price=best_original_price * servings_multiplier,
+            is_on_sale=True,
+            sale_price=final_price * servings_multiplier
+        )
+        
+        items.append(item)
+        total_cost += final_price * servings_multiplier
+        total_savings += (best_original_price - final_price) * servings_multiplier
     
     grocery_list = GroceryList(
         user_location=user_location,
