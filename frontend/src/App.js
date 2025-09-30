@@ -533,7 +533,7 @@ const Home = () => {
                             {store.distance_km} km away
                           </Badge>
                           {store.price_match_policy?.has_price_match ? (
-                            <Badge className="bg-green-100 text-green-800 hover:bg-green-100">
+                            <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100 border-emerald-300">
                               <DollarSign className="h-3 w-3 mr-1" />
                               Price Match
                               {store.price_match_policy.additional_discount > 0 && 
@@ -541,7 +541,7 @@ const Home = () => {
                               }
                             </Badge>
                           ) : (
-                            <Badge variant="outline" className="text-gray-500">
+                            <Badge variant="outline" className="text-gray-500 border-gray-300">
                               No Price Match
                             </Badge>
                           )}
