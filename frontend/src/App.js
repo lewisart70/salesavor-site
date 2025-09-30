@@ -450,12 +450,12 @@ const Home = () => {
                     }
                   }}
                   disabled={!isAccessible}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all ${
+                  className={`flex items-center space-x-2 px-4 py-3 rounded-xl transition-all shadow-sm ${
                     currentStep === key 
-                      ? 'bg-green-100 text-green-700 ring-2 ring-green-300' 
+                      ? 'bg-emerald-100 text-emerald-800 ring-2 ring-emerald-300 shadow-md transform scale-105' 
                       : isAccessible 
-                        ? 'bg-blue-50 text-blue-600 hover:bg-blue-100 cursor-pointer' 
-                        : 'bg-gray-100 text-gray-500 cursor-not-allowed'
+                        ? 'bg-white text-emerald-700 hover:bg-emerald-50 cursor-pointer hover:shadow-md border border-emerald-200' 
+                        : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
                   }`}>
                   <Icon className="h-4 w-4" />
                   <span className="text-sm font-medium">{label}</span>
