@@ -317,7 +317,7 @@ FLYER_URLS = {
     "Loblaws": "https://www.loblaws.ca/print-flyer",
     "Metro": "https://www.metro.ca/en/flyer",
     "Walmart": "https://www.walmart.ca/en/flyer?icid=dept_flyout_other_all_flyers_30792_LV3AV1UKYE",
-    "Sobeys": "https://www.sobeys.com/en/flyers",
+    "Sobeys": "https://www.sobeys.com/flyer",
     "FreshCo": "https://www.freshco.com/flyer",
     "FoodBasics": "https://www.foodbasics.ca/flyer",
     "NoFrills": "https://www.nofrills.ca/print-flyer",
