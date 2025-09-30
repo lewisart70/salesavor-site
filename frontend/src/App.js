@@ -178,15 +178,231 @@ const Home = () => {
     );
   };
 
+  // Profile Component
+  const ProfileForm = () => {
+    const [formData, setFormData] = useState({
+      name: userProfile?.name || '',
+      email: userProfile?.email || '',
+      age: userProfile?.age || '',
+      household_size: userProfile?.household_size || 4,
+      dietary_preferences: userProfile?.dietary_preferences || [],
+      food_allergies: userProfile?.food_allergies || [],
+      cuisine_preferences: userProfile?.cuisine_preferences || [],
+      budget_range: userProfile?.budget_range || 'moderate',
+      cooking_skill: userProfile?.cooking_skill || 'beginner',
+      preferred_meal_types: userProfile?.preferred_meal_types || ['dinner']
+    });
+
+    const dietaryOptions = ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'keto', 'paleo', 'low-carb', 'low-sodium'];
+    const allergyOptions = ['nuts', 'shellfish', 'eggs', 'dairy', 'soy', 'gluten', 'fish'];
+    const cuisineOptions = ['italian', 'asian', 'mexican', 'indian', 'mediterranean', 'american', 'french', 'thai'];
+    const mealTypeOptions = ['breakfast', 'lunch', 'dinner', 'snacks'];
+
+    const handleCheckboxChange = (value, field) => {
+      setFormData(prev => ({
+        ...prev,
+        [field]: prev[field].includes(value)
+          ? prev[field].filter(item => item !== value)
+          : [...prev[field], value]
+      }));
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      saveProfile(formData);
+    };
+
+    return (
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              value={formData.name}
+              onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+              placeholder="your@email.com"
+            />
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="age">Age</Label>
+            <Input
+              id="age"
+              type="number"
+              value={formData.age}
+              onChange={(e) => setFormData(prev => ({ ...prev, age: parseInt(e.target.value) || '' }))}
+              placeholder="Your age"
+            />
+          </div>
+          <div>
+            <Label htmlFor="household_size">Household Size</Label>
+            <Input
+              id="household_size"
+              type="number"
+              min="1"
+              max="10"
+              value={formData.household_size}
+              onChange={(e) => setFormData(prev => ({ ...prev, household_size: parseInt(e.target.value) || 4 }))}
+            />
+          </div>
+        </div>
+
+        <div>
+          <Label>Dietary Preferences</Label>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+            {dietaryOptions.map(option => (
+              <div key={option} className="flex items-center space-x-2">
+                <Checkbox
+                  id={`diet-${option}`}
+                  checked={formData.dietary_preferences.includes(option)}
+                  onCheckedChange={() => handleCheckboxChange(option, 'dietary_preferences')}
+                />
+                <Label htmlFor={`diet-${option}`} className="text-sm capitalize">
+                  {option}
+                </Label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <Label>Food Allergies</Label>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+            {allergyOptions.map(option => (
+              <div key={option} className="flex items-center space-x-2">
+                <Checkbox
+                  id={`allergy-${option}`}
+                  checked={formData.food_allergies.includes(option)}
+                  onCheckedChange={() => handleCheckboxChange(option, 'food_allergies')}
+                />
+                <Label htmlFor={`allergy-${option}`} className="text-sm capitalize">
+                  {option}
+                </Label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <Label>Preferred Cuisines</Label>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+            {cuisineOptions.map(option => (
+              <div key={option} className="flex items-center space-x-2">
+                <Checkbox
+                  id={`cuisine-${option}`}
+                  checked={formData.cuisine_preferences.includes(option)}
+                  onCheckedChange={() => handleCheckboxChange(option, 'cuisine_preferences')}
+                />
+                <Label htmlFor={`cuisine-${option}`} className="text-sm capitalize">
+                  {option}
+                </Label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <Label>Preferred Meal Types</Label>
+          <div className="flex gap-4 mt-2">
+            {mealTypeOptions.map(option => (
+              <div key={option} className="flex items-center space-x-2">
+                <Checkbox
+                  id={`meal-${option}`}
+                  checked={formData.preferred_meal_types.includes(option)}
+                  onCheckedChange={() => handleCheckboxChange(option, 'preferred_meal_types')}
+                />
+                <Label htmlFor={`meal-${option}`} className="text-sm capitalize">
+                  {option}
+                </Label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="budget_range">Budget Range</Label>
+            <Select value={formData.budget_range} onValueChange={(value) => setFormData(prev => ({ ...prev, budget_range: value }))}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select budget range" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="budget">Budget ($20-50/week)</SelectItem>
+                <SelectItem value="moderate">Moderate ($50-100/week)</SelectItem>
+                <SelectItem value="premium">Premium ($100+/week)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Label htmlFor="cooking_skill">Cooking Skill</Label>
+            <Select value={formData.cooking_skill} onValueChange={(value) => setFormData(prev => ({ ...prev, cooking_skill: value }))}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select cooking skill" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="beginner">Beginner</SelectItem>
+                <SelectItem value="intermediate">Intermediate</SelectItem>
+                <SelectItem value="advanced">Advanced</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        <div className="flex gap-4 pt-4">
+          <Button type="submit" className="flex-1">
+            {userProfile ? 'Update Profile' : 'Create Profile'}
+          </Button>
+          <Button type="button" variant="outline" onClick={() => setShowProfile(false)}>
+            Cancel
+          </Button>
+        </div>
+      </form>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       {/* Hero Section */}
       <div className="relative bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl" style={{fontFamily: 'Inter, sans-serif'}}>
-              <span className="text-green-600">Good</span>Basket
-            </h1>
+            <div className="flex justify-between items-center mb-8">
+              <div></div>
+              <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl" style={{fontFamily: 'Inter, sans-serif'}}>
+                <span className="text-green-600">Good</span>Basket
+              </h1>
+              <div className="flex gap-2">
+                <Dialog open={showProfile} onOpenChange={setShowProfile}>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" size="sm" data-testid="profile-button">
+                      <User className="h-4 w-4 mr-2" />
+                      {userProfile ? 'Profile' : 'Create Profile'}
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle>
+                        {userProfile ? 'Update Your Profile' : 'Create Your Profile'}
+                      </DialogTitle>
+                    </DialogHeader>
+                    <ProfileForm />
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </div>
             <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
               Your smart grocery companion - Find the best deals, generate meal plans, and save money on groceries with AI-powered recommendations
             </p>
