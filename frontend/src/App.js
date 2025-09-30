@@ -501,9 +501,34 @@ const Home = () => {
                         <h3 className="font-semibold text-gray-900">{store.name}</h3>
                         <p className="text-sm text-gray-600">{store.chain}</p>
                         <p className="text-xs text-gray-500 mt-1">{store.address}</p>
-                        <Badge variant="secondary" className="mt-2">
-                          {store.distance_km} km away
-                        </Badge>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          <Badge variant="secondary">
+                            {store.distance_km} km away
+                          </Badge>
+                          {store.price_match_policy?.has_price_match ? (
+                            <Badge className="bg-green-100 text-green-800 hover:bg-green-100">
+                              <DollarSign className="h-3 w-3 mr-1" />
+                              Price Match
+                              {store.price_match_policy.additional_discount > 0 && 
+                                ` +${store.price_match_policy.additional_discount}%`
+                              }
+                            </Badge>
+                          ) : (
+                            <Badge variant="outline" className="text-gray-500">
+                              No Price Match
+                            </Badge>
+                          )}
+                        </div>
+                        {store.price_match_policy?.has_price_match && (
+                          <div className="mt-2">
+                            <p className="text-xs text-green-700 font-medium">
+                              {store.price_match_policy.policy_name}
+                            </p>
+                            <p className="text-xs text-gray-600 mt-1">
+                              {store.price_match_policy.description}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </CardContent>
