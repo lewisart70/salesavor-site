@@ -364,7 +364,9 @@ CANADIAN_STORES = [
             "match_percentage": 100,
             "additional_discount": 0
         },
-        "flyer_url": "https://www.metro.ca/en/flyer"
+        "flyer_url": "https://www.metro.ca/en/flyer",
+        "logo_url": "https://via.placeholder.com/48x48/0066CC/FFFFFF?text=M",
+        "brand_color": "#0066CC"
     },
     {
         "name": "Food Basics", 
