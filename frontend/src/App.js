@@ -501,12 +501,12 @@ const Home = () => {
             <h2 className="text-2xl font-bold text-center mb-6">Nearby Grocery Stores</h2>
             
             {/* Price Match Explanation */}
-            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6 max-w-4xl mx-auto shadow-sm">
+            <div className="bg-teal-50 border border-teal-200 rounded-xl p-6 mb-6 max-w-4xl mx-auto shadow-sm">
               <div className="flex items-center mb-3">
-                <DollarSign className="h-5 w-5 text-emerald-600 mr-2" />
-                <h3 className="font-semibold text-emerald-800">Price Match Policies</h3>
+                <DollarSign className="h-5 w-5 text-teal-700 mr-2" />
+                <h3 className="font-semibold text-teal-900">Price Match Policies</h3>
               </div>
-              <p className="text-sm text-emerald-700">
+              <p className="text-sm text-teal-800">
                 Stores with price matching will honor competitors' advertised prices, helping you save more money. 
                 Some stores even beat competitor prices by an additional percentage!
               </p>
