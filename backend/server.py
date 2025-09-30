@@ -339,7 +339,8 @@ CANADIAN_STORES = [
             "excluded_stores": ["Costco", "Wholesale clubs"],
             "match_percentage": 100,
             "additional_discount": 0
-        }
+        },
+        "flyer_url": "https://www.loblaws.ca/print-flyer"
     },
     {
         "name": "Metro Plus", 
