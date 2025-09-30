@@ -357,7 +357,8 @@ CANADIAN_STORES = [
             "excluded_stores": ["Warehouse stores", "Online retailers"],
             "match_percentage": 100,
             "additional_discount": 0
-        }
+        },
+        "flyer_url": "https://www.metro.ca/en/flyers"
     },
     {
         "name": "Food Basics", 
@@ -374,7 +375,8 @@ CANADIAN_STORES = [
             "excluded_stores": [],
             "match_percentage": 0,
             "additional_discount": 0
-        }
+        },
+        "flyer_url": "https://www.freshco.com/flyer"
     },
     {
         "name": "Walmart Supercentre", 
@@ -391,7 +393,8 @@ CANADIAN_STORES = [
             "excluded_stores": ["Membership clubs", "Online-only retailers"],
             "match_percentage": 100,
             "additional_discount": 0
-        }
+        },
+        "flyer_url": "https://www.walmart.ca/en/flyers-offers"
     },
     {
         "name": "Sobeys Urban Fresh", 
@@ -408,7 +411,8 @@ CANADIAN_STORES = [
             "excluded_stores": ["Wholesale clubs", "Independent stores"],
             "match_percentage": 100,
             "additional_discount": 10
-        }
+        },
+        "flyer_url": "https://www.sobeys.com/en/flyers"
     },
     {
         "name": "Costco Wholesale", 
@@ -425,7 +429,8 @@ CANADIAN_STORES = [
             "excluded_stores": [],
             "match_percentage": 0,
             "additional_discount": 0
-        }
+        },
+        "flyer_url": "https://www.costco.ca/warehouse-locations"
     },
     {
         "name": "FreshMart", 
@@ -442,7 +447,8 @@ CANADIAN_STORES = [
             "excluded_stores": ["Warehouse stores"],
             "match_percentage": 100,
             "additional_discount": 5
-        }
+        },
+        "flyer_url": "https://www.freshco.com/flyer"
     },
     {
         "name": "ValueMart", 
@@ -459,7 +465,8 @@ CANADIAN_STORES = [
             "excluded_stores": ["Online retailers", "Membership stores"],
             "match_percentage": 100,
             "additional_discount": 3
-        }
+        },
+        "flyer_url": "https://www.nofrills.ca/print-flyer"
     }
 ]
 
