@@ -788,6 +788,77 @@ const Home = () => {
           </div>
         )}
 
+        {/* Recipes Step - No Recipes Yet */}
+        {currentStep === 'recipes' && generatedRecipes.length === 0 && (
+          <div data-testid="recipes-placeholder" className="text-center">
+            <div className="max-w-2xl mx-auto">
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 border border-emerald-200 shadow-sm">
+                <div className="mb-6">
+                  <div className="mx-auto w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                    <ChefHat className="h-10 w-10 text-emerald-600" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-emerald-800 mb-3">
+                    Ready to Create Amazing Meals?
+                  </h2>
+                  <p className="text-emerald-700 text-lg">
+                    Let's generate personalized recipes using the best sale prices from your local stores!
+                  </p>
+                </div>
+                
+                {saleItems.length === 0 ? (
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6">
+                    <p className="text-yellow-800 font-medium mb-2">📋 First, let's get your sale items</p>
+                    <p className="text-sm text-yellow-700">
+                      Go back to <span className="font-medium">Sales</span> to see current deals, then return here for recipe magic!
+                    </p>
+                    <Button 
+                      onClick={() => setCurrentStep('sales')}
+                      className="mt-3 bg-yellow-600 hover:bg-yellow-700 text-white"
+                    >
+                      View Sales First
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-6">
+                    <p className="text-emerald-800 font-medium mb-2">
+                      🛒 Great! You have {saleItems.length} sale items ready
+                    </p>
+                    <p className="text-sm text-emerald-700 mb-4">
+                      Now let's turn those deals into delicious family meals
+                    </p>
+                    <Button 
+                      onClick={generateRecipes}
+                      disabled={loading}
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-xl shadow-lg transform transition-all hover:scale-105"
+                    >
+                      {loading ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          Generating Recipes...
+                        </>
+                      ) : (
+                        <>
+                          <ChefHat className="h-5 w-5 mr-2" />
+                          Generate My Recipes
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                )}
+                
+                <div className="text-center">
+                  <p className="text-sm text-emerald-600 mb-4">
+                    ✨ Our AI will create recipes based on your sale items 
+                    {userProfile && userProfile.dietary_preferences.length > 0 && 
+                      ` and your ${userProfile.dietary_preferences.join(', ')} preferences`
+                    }
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Grocery List Step */}
         {currentStep === 'groceryList' && groceryList && (
           <div data-testid="grocery-list-section">
