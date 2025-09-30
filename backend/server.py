@@ -85,6 +85,7 @@ class StoreLocation(BaseModel):
     longitude: float
     phone: Optional[str] = None
     distance_km: Optional[float] = None
+    price_match_policy: Dict[str, Any] = {}  # Price matching information
 
 class SaleItem(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
