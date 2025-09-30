@@ -379,10 +379,11 @@ const Home = () => {
               <div></div>
               <div className="text-center">
                 <div className="mb-6">
-                  <h1 className="text-5xl font-bold text-emerald-800 sm:text-6xl md:text-7xl tracking-tight" style={{fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'}}>
-                    SaleSavor
-                  </h1>
-                  <div className="h-1 w-32 bg-gradient-to-r from-emerald-600 to-teal-600 mx-auto mt-2 rounded-full"></div>
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_meal-saver-4/artifacts/bt5hzyu6_image.png"
+                    alt="SaleSavor Logo"
+                    className="h-20 w-auto mx-auto mb-2"
+                  />
                 </div>
               </div>
               <div className="flex gap-2">
