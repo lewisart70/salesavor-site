@@ -377,7 +377,7 @@ CANADIAN_STORES = [
             "match_percentage": 0,
             "additional_discount": 0
         },
-        "flyer_url": "https://www.freshco.com/flyer"
+        "flyer_url": "https://www.foodbasics.ca/flyer"
     },
     {
         "name": "Walmart Supercentre", 
