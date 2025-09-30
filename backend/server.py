@@ -35,7 +35,6 @@ class UserProfile(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: Optional[str] = None
     email: Optional[str] = None
-    age: Optional[int] = None
     household_size: int = 4
     dietary_preferences: List[str] = []  # e.g., ["vegetarian", "gluten-free", "dairy-free"]
     food_allergies: List[str] = []  # e.g., ["nuts", "shellfish"]
@@ -49,7 +48,6 @@ class UserProfile(BaseModel):
 class UserProfileCreate(BaseModel):
     name: Optional[str] = None
     email: Optional[str] = None
-    age: Optional[int] = None
     household_size: int = 4
     dietary_preferences: List[str] = []
     food_allergies: List[str] = []
@@ -61,7 +59,6 @@ class UserProfileCreate(BaseModel):
 class UserProfileUpdate(BaseModel):
     name: Optional[str] = None
     email: Optional[str] = None
-    age: Optional[int] = None
     household_size: Optional[int] = None
     dietary_preferences: Optional[List[str]] = None
     food_allergies: Optional[List[str]] = None
