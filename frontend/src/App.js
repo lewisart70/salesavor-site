@@ -549,9 +549,20 @@ const Home = () => {
         {/* Recipes Step */}
         {currentStep === 'recipes' && generatedRecipes.length > 0 && (
           <div data-testid="recipes-section">
-            <h2 className="text-2xl font-bold text-center mb-6">
-              AI-Generated Recipes Using Sale Ingredients
-            </h2>
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold">
+                AI-Generated Recipes Using Sale Ingredients
+              </h2>
+              {userProfile && (
+                <p className="text-sm text-gray-600 mt-2">
+                  ✨ Personalized for {userProfile.name || 'you'} • 
+                  {userProfile.dietary_preferences.length > 0 && (
+                    <span> {userProfile.dietary_preferences.join(', ')} • </span>
+                  )}
+                  {userProfile.household_size} people
+                </p>
+              )}
+            </div>
             <div className="grid lg:grid-cols-2 gap-6 mb-8">
               {generatedRecipes.map((recipe) => (
                 <Card 
