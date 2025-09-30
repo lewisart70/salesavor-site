@@ -10,6 +10,9 @@ from typing import List, Optional, Dict, Any
 import uuid
 from datetime import datetime, timezone, timedelta
 import math
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from fastapi import BackgroundTasks
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
