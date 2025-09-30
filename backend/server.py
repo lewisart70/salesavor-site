@@ -344,7 +344,9 @@ CANADIAN_STORES = [
             "match_percentage": 100,
             "additional_discount": 0
         },
-        "flyer_url": "https://www.loblaws.ca/print-flyer"
+        "flyer_url": "https://www.loblaws.ca/print-flyer",
+        "logo_url": "https://via.placeholder.com/48x48/FF6600/FFFFFF?text=L",
+        "brand_color": "#FF6600"
     },
     {
         "name": "Metro Plus", 
