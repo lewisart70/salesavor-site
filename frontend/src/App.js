@@ -156,6 +156,37 @@ const Home = () => {
     }
   };
 
+  // Email grocery list function
+  const emailGroceryList = async () => {
+    if (!emailAddress) {
+      toast.error('Please enter your email address');
+      return;
+    }
+    
+    if (!groceryList) {
+      toast.error('No grocery list to email');
+      return;
+    }
+    
+    setEmailLoading(true);
+    try {
+      const response = await axios.post(`${API}/email-grocery-list`, {
+        email: emailAddress,
+        grocery_list_data: groceryList,
+        user_name: userProfile?.name || null
+      });
+      
+      if (response.data.status === 'success') {
+        toast.success(`Grocery list sent to ${emailAddress}!`);
+        setEmailAddress(''); // Clear email field after successful send
+      }
+    } catch (error) {
+      console.error('Error emailing grocery list:', error);
+      toast.error('Error sending email. Please try again.');
+    }
+    setEmailLoading(false);
+  };
+
   // Generate grocery list
   const generateGroceryList = async () => {
     if (selectedRecipes.length === 0) {
