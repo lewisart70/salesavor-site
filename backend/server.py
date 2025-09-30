@@ -449,7 +449,7 @@ CANADIAN_STORES = [
             "match_percentage": 100,
             "additional_discount": 5
         },
-        "flyer_url": "https://www.freshco.com/flyer"
+        "flyer_url": "https://www.foodbasics.ca/flyer"
     },
     {
         "name": "ValueMart", 
