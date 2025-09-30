@@ -384,7 +384,9 @@ CANADIAN_STORES = [
             "match_percentage": 0,
             "additional_discount": 0
         },
-        "flyer_url": "https://www.foodbasics.ca/flyer"
+        "flyer_url": "https://www.foodbasics.ca/flyer",
+        "logo_url": "https://via.placeholder.com/48x48/FF9900/FFFFFF?text=FB",
+        "brand_color": "#FF9900"
     },
     {
         "name": "Walmart Supercentre", 
