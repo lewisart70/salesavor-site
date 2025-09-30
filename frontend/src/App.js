@@ -480,6 +480,19 @@ const Home = () => {
         {currentStep === 'stores' && nearbyStores.length > 0 && (
           <div data-testid="stores-section">
             <h2 className="text-2xl font-bold text-center mb-6">Nearby Grocery Stores</h2>
+            
+            {/* Price Match Explanation */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 max-w-4xl mx-auto">
+              <div className="flex items-center mb-2">
+                <DollarSign className="h-5 w-5 text-blue-600 mr-2" />
+                <h3 className="font-semibold text-blue-800">Price Match Policies</h3>
+              </div>
+              <p className="text-sm text-blue-700">
+                Stores with price matching will honor competitors' advertised prices, helping you save more money. 
+                Some stores even beat competitor prices by an additional percentage!
+              </p>
+            </div>
+            
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               {nearbyStores.slice(0, 6).map((store) => (
                 <Card 
