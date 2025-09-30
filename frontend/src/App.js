@@ -97,17 +97,48 @@ const Home = () => {
     try {
       const response = await axios.post(`${API}/recipes/generate`, {
         sale_items: saleItems,
-        dietary_preferences: [],
-        servings: 4
+        dietary_preferences: userProfile?.dietary_preferences || [],
+        servings: userProfile?.household_size || 4,
+        profile_id: userProfile?.id
       });
       setGeneratedRecipes(response.data);
       setCurrentStep('recipes');
-      toast.success('Recipes generated based on current sales!');
+      toast.success('Recipes generated based on current sales and your preferences!');
     } catch (error) {
       console.error('Error generating recipes:', error);
       toast.error('Error generating recipes. Please try again.');
     }
     setLoading(false);
+  };
+
+  // Profile management functions
+  const saveProfile = async (profileData) => {
+    try {
+      if (userProfile && userProfile.id) {
+        // Update existing profile
+        const response = await axios.put(`${API}/profile/${userProfile.id}`, profileData);
+        setUserProfile(response.data);
+        toast.success('Profile updated successfully!');
+      } else {
+        // Create new profile
+        const response = await axios.post(`${API}/profile`, profileData);
+        setUserProfile(response.data);
+        toast.success('Profile created successfully!');
+      }
+      setShowProfile(false);
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      toast.error('Error saving profile. Please try again.');
+    }
+  };
+
+  const loadProfile = async (profileId) => {
+    try {
+      const response = await axios.get(`${API}/profile/${profileId}`);
+      setUserProfile(response.data);
+    } catch (error) {
+      console.error('Error loading profile:', error);
+    }
   };
 
   // Generate grocery list
