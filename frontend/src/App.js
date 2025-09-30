@@ -404,15 +404,16 @@ const Home = () => {
                 </Dialog>
               </div>
             </div>
-            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Save smart, shop less - Your AI-powered grocery savings companion that finds the best deals and creates personalized meal plans
+            <p className="mt-4 max-w-md mx-auto text-lg text-emerald-700 sm:text-xl md:mt-6 md:text-2xl md:max-w-3xl font-medium">
+              Bringing Family Meals Home - For Less
             </p>
-            <div className="mt-8">
+            <div className="mt-8 relative">
               <img 
-                src="https://images.unsplash.com/photo-1693505628207-dbeb3d882c92?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwyfHxncm9jZXJ5JTIwc2F2aW5nc3xlbnwwfHx8fDE3NTkyNTY4Mjh8MA&ixlib=rb-4.1.0&q=85" 
-                alt="Grocery Shopping" 
-                className="mx-auto h-64 w-full max-w-lg object-cover rounded-lg shadow-lg"
+                src="https://customer-assets.emergentagent.com/job_meal-saver-4/artifacts/5krd1yy6_getty-images-8p_pT19gLHs-unsplash.jpg" 
+                alt="Family Grocery Shopping" 
+                className="mx-auto h-80 w-full max-w-2xl object-cover rounded-2xl shadow-2xl border-4 border-white"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent rounded-2xl max-w-2xl mx-auto h-80"></div>
             </div>
           </div>
         </div>
