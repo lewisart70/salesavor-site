@@ -457,9 +457,9 @@ const Home = () => {
                   disabled={!isAccessible}
                   className={`flex items-center space-x-2 px-4 py-3 rounded-xl transition-all shadow-sm ${
                     currentStep === key 
-                      ? 'bg-emerald-100 text-emerald-800 ring-2 ring-emerald-300 shadow-md transform scale-105' 
+                      ? 'bg-teal-100 text-teal-900 ring-2 ring-teal-400 shadow-md transform scale-105' 
                       : isAccessible 
-                        ? 'bg-white text-emerald-700 hover:bg-emerald-50 cursor-pointer hover:shadow-md border border-emerald-200' 
+                        ? 'bg-white text-slate-700 hover:bg-slate-50 cursor-pointer hover:shadow-md border border-slate-200 hover:border-teal-300' 
                         : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
                   }`}>
                   <Icon className="h-4 w-4" />
