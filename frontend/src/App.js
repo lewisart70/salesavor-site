@@ -23,6 +23,8 @@ const Home = () => {
   const [groceryList, setGroceryList] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState('location');
+  const [showProfile, setShowProfile] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
 
   // Get user location
   const getCurrentLocation = () => {
