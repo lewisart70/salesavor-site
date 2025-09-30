@@ -315,7 +315,7 @@ AMERICAN_FOOD_GUIDE = [
 # Real Canadian grocery chain flyer URLs (updated weekly)
 FLYER_URLS = {
     "Loblaws": "https://www.loblaws.ca/print-flyer",
-    "Metro": "https://www.metro.ca/en/flyers",
+    "Metro": "https://www.metro.ca/en/flyer",
     "Walmart": "https://www.walmart.ca/en/flyers-offers",
     "Sobeys": "https://www.sobeys.com/en/flyers",
     "FreshCo": "https://www.freshco.com/flyer",
