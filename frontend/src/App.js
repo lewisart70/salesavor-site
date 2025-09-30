@@ -465,7 +465,7 @@ const Home = () => {
                   <Icon className="h-4 w-4" />
                   <span className="text-sm font-medium">{label}</span>
                   {completed && currentStep !== key && (
-                    <span className="text-xs text-emerald-600 bg-emerald-100 rounded-full px-1.5 py-0.5">✓</span>
+                    <span className="text-xs text-teal-700 bg-teal-100 rounded-full px-1.5 py-0.5">✓</span>
                   )}
                 </button>
               );
