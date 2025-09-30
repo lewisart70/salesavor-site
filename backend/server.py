@@ -94,6 +94,8 @@ class StoreLocation(BaseModel):
     distance_km: Optional[float] = None
     price_match_policy: Dict[str, Any] = {}  # Price matching information
     flyer_url: Optional[str] = None  # Link to current flyer
+    logo_url: Optional[str] = None  # Store logo URL
+    brand_color: Optional[str] = None  # Brand primary color
 
 class SaleItem(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
