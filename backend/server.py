@@ -689,6 +689,39 @@ async def delete_profile(profile_id: str):
         logging.error(f"Error deleting profile: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error deleting profile: {str(e)}")
 
+# Food Guide Information Endpoints
+@api_router.get("/food-guide/{country}", response_model=List[FoodGuideRecommendation])
+async def get_food_guide(country: str):
+    """Get food guide recommendations for specified country (US or Canada)"""
+    try:
+        country_upper = country.upper()
+        if country_upper == "CANADA":
+            food_guide_data = CANADIAN_FOOD_GUIDE
+        elif country_upper == "US" or country_upper == "USA":
+            food_guide_data = AMERICAN_FOOD_GUIDE
+        else:
+            raise HTTPException(status_code=400, detail="Country must be 'Canada' or 'US'")
+        
+        recommendations = [FoodGuideRecommendation(**item) for item in food_guide_data]
+        return recommendations
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.error(f"Error fetching food guide: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching food guide: {str(e)}")
+
+@api_router.get("/food-guide", response_model=List[FoodGuideRecommendation])
+async def get_all_food_guides():
+    """Get food guide recommendations for both countries"""
+    try:
+        all_recommendations = []
+        for item in CANADIAN_FOOD_GUIDE + AMERICAN_FOOD_GUIDE:
+            all_recommendations.append(FoodGuideRecommendation(**item))
+        return all_recommendations
+    except Exception as e:
+        logging.error(f"Error fetching food guides: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching food guides: {str(e)}")
+
 # Include the router in the main app
 app.include_router(api_router)
 
