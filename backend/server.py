@@ -194,7 +194,7 @@ async def generate_recipes(request: Dict[str, Any]):
             api_key=api_key,
             session_id=f"recipe-gen-{uuid.uuid4()}",
             system_message="You are a professional chef and nutritionist helping families save money on groceries by creating delicious meals using sale ingredients. Generate detailed recipes with precise measurements and clear instructions."
-        ).with_model("openai", "gpt-5")
+        ).with_model("openai", "gpt-4o")
         
         # Extract data from request
         sale_items = request.get('sale_items', [])
