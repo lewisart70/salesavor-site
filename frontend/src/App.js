@@ -618,15 +618,44 @@ const Home = () => {
               ))}
             </div>
             <div className="text-center">
-              <p className="text-gray-600 mb-4">
-                Selected {selectedRecipes.length} recipe{selectedRecipes.length !== 1 ? 's' : ''}
-              </p>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <div className="flex items-center justify-center mb-2">
+                  <ChefHat className="h-5 w-5 text-blue-600 mr-2" />
+                  <h3 className="font-medium text-blue-800">Choose Your Recipes</h3>
+                </div>
+                <p className="text-sm text-blue-700">
+                  Click on the recipe cards above to select the meals you'd like to cook. 
+                  We'll generate an optimized shopping list for your selections.
+                </p>
+              </div>
+              
+              {selectedRecipes.length > 0 ? (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                  <p className="text-green-800 font-medium">
+                    ✓ {selectedRecipes.length} recipe{selectedRecipes.length !== 1 ? 's' : ''} selected
+                  </p>
+                  <p className="text-sm text-green-700">
+                    Ready to create your personalized grocery list!
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                  <p className="text-yellow-800 font-medium">
+                    👆 Please select at least one recipe above
+                  </p>
+                  <p className="text-sm text-yellow-700">
+                    Click on any recipe card to select it for your meal plan
+                  </p>
+                </div>
+              )}
+              
               <Button 
                 onClick={generateGroceryList} 
                 disabled={loading || selectedRecipes.length === 0}
+                className={selectedRecipes.length > 0 ? 'bg-green-600 hover:bg-green-700' : ''}
                 data-testid="generate-grocery-list-btn"
               >
-                {loading ? 'Creating List...' : 'Create Grocery List'}
+                {loading ? 'Creating Your List...' : selectedRecipes.length > 0 ? `Create List for ${selectedRecipes.length} Recipe${selectedRecipes.length !== 1 ? 's' : ''}` : 'Select Recipes First'}
               </Button>
             </div>
           </div>
