@@ -183,9 +183,10 @@ async def get_store_sales(store_id: str):
 async def generate_recipes(request: Dict[str, Any]):
     """Generate recipes based on available sale ingredients"""
     try:
-        sale_items = request.get('sale_items', [])
-        dietary_preferences = request.get('dietary_preferences', [])
+        # Extract servings from request for dynamic recipe sizing
         servings = request.get('servings', 4)
+        
+        # Note: sale_items and dietary_preferences available in request but using mock data for demo
         
         # For demo purposes, return mock recipes immediately to avoid LLM delays
         # In production, uncomment the LLM integration below
