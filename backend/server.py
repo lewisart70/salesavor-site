@@ -31,6 +31,45 @@ class UserLocation(BaseModel):
     longitude: float
     address: Optional[str] = None
 
+class UserProfile(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: Optional[str] = None
+    email: Optional[str] = None
+    age: Optional[int] = None
+    household_size: int = 4
+    dietary_preferences: List[str] = []  # e.g., ["vegetarian", "gluten-free", "dairy-free"]
+    food_allergies: List[str] = []  # e.g., ["nuts", "shellfish"]
+    cuisine_preferences: List[str] = []  # e.g., ["italian", "asian", "mexican"]
+    budget_range: str = "moderate"  # "budget", "moderate", "premium"
+    cooking_skill: str = "beginner"  # "beginner", "intermediate", "advanced"
+    preferred_meal_types: List[str] = ["dinner"]  # "breakfast", "lunch", "dinner", "snacks"
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class UserProfileCreate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[str] = None
+    age: Optional[int] = None
+    household_size: int = 4
+    dietary_preferences: List[str] = []
+    food_allergies: List[str] = []
+    cuisine_preferences: List[str] = []
+    budget_range: str = "moderate"
+    cooking_skill: str = "beginner"
+    preferred_meal_types: List[str] = ["dinner"]
+
+class UserProfileUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[str] = None
+    age: Optional[int] = None
+    household_size: Optional[int] = None
+    dietary_preferences: Optional[List[str]] = None
+    food_allergies: Optional[List[str]] = None
+    cuisine_preferences: Optional[List[str]] = None
+    budget_range: Optional[str] = None
+    cooking_skill: Optional[str] = None
+    preferred_meal_types: Optional[List[str]] = None
+
 class StoreLocation(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
