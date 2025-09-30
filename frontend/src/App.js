@@ -428,7 +428,7 @@ const Home = () => {
                 // Allow going back to previous steps
                 (key === 'location') ||
                 (key === 'stores' && userLocation !== null) ||
-                (key === 'sales' && nearbyStores.length > 0) ||
+                (key === 'sales' && nearbyStores.length > 0 && selectedStore !== null) ||
                 (key === 'recipes' && saleItems.length > 0);
               
               return (
