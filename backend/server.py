@@ -444,7 +444,9 @@ CANADIAN_STORES = [
             "match_percentage": 0,
             "additional_discount": 0
         },
-        "flyer_url": "https://www.costco.ca/warehouse-locations"
+        "flyer_url": "https://www.costco.ca/warehouse-locations",
+        "logo_url": "https://via.placeholder.com/48x48/CC0000/FFFFFF?text=C",
+        "brand_color": "#CC0000"
     },
     {
         "name": "FreshMart", 
