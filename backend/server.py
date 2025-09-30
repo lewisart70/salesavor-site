@@ -173,7 +173,7 @@ async def get_store_sales(store_id: str):
         item = SaleItem(
             **item_data,
             store_id=store_id,
-            valid_until=datetime.now(timezone.utc).replace(day=datetime.now().day + 7)  # Valid for a week
+            valid_until=datetime.now(timezone.utc) + datetime.timedelta(days=7)  # Valid for a week
         )
         sale_items.append(item)
     
