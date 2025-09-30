@@ -311,6 +311,18 @@ AMERICAN_FOOD_GUIDE = [
 ]
 
 # Mock data for Canadian grocery stores
+# Real Canadian grocery chain flyer URLs (updated weekly)
+FLYER_URLS = {
+    "Loblaws": "https://www.loblaws.ca/print-flyer",
+    "Metro": "https://www.metro.ca/en/flyers",
+    "Walmart": "https://www.walmart.ca/en/flyers-offers",
+    "Sobeys": "https://www.sobeys.com/en/flyers",
+    "FreshCo": "https://www.freshco.com/flyer",
+    "NoFrills": "https://www.nofrills.ca/print-flyer",
+    "Independent": "https://www.yourindependentgrocer.ca/print-flyer"
+}
+
+# Enhanced store data with flyer URLs
 CANADIAN_STORES = [
     {
         "name": "Loblaws Superstore", 
