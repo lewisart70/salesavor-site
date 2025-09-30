@@ -75,7 +75,7 @@ const Home = () => {
       if (response.data.length > 0) {
         const firstStore = response.data[0];
         setSelectedStore(firstStore);
-        await getStoreSales(firstStore.id);
+        // Remove automatic progression - let user click to view sales
       }
     } catch (error) {
       console.error('Error finding stores:', error);
