@@ -562,7 +562,7 @@ const Home = () => {
                               href={store.flyer_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center text-xs text-blue-600 hover:text-blue-800 font-medium"
+                              className="inline-flex items-center text-xs text-teal-600 hover:text-teal-800 font-medium transition-colors"
                             >
                               <ExternalLink className="h-3 w-3 mr-1" />
                               View Current Flyer
