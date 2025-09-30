@@ -962,6 +962,51 @@ const Home = () => {
             </div>
 
             <div className="text-center mt-8">
+              {/* Email Grocery List Section */}
+              <Card className="mb-6 max-w-md mx-auto">
+                <CardHeader className="bg-teal-50 border-b border-teal-200">
+                  <CardTitle className="text-center text-teal-900 flex items-center justify-center">
+                    📧 Email Your Grocery List
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <p className="text-slate-700 text-sm mb-4">
+                    Get this list delivered to your inbox! Perfect for easy mobile shopping.
+                  </p>
+                  <div className="space-y-4">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email address"
+                      value={emailAddress}
+                      onChange={(e) => setEmailAddress(e.target.value)}
+                      className="w-full"
+                    />
+                    <Button 
+                      onClick={emailGroceryList}
+                      disabled={emailLoading || !emailAddress}
+                      className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2.5 rounded-xl shadow-lg transform transition-all hover:scale-105"
+                    >
+                      {emailLoading ? (
+                        <>
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                          Sending Email...
+                        </>
+                      ) : (
+                        <>
+                          📧 Send Grocery List
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                  <div className="mt-4 p-3 bg-slate-50 rounded-lg">
+                    <p className="text-xs text-slate-600">
+                      💡 <strong>Why email?</strong> Have your list on your phone while shopping, 
+                      share with family members, or keep for your records!
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+              
               <Button 
                 onClick={() => {
                   setCurrentStep('location');
