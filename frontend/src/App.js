@@ -372,17 +372,18 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       {/* Hero Section */}
-      <div className="relative bg-white shadow-sm">
+      <div className="relative bg-gradient-to-br from-emerald-50 via-white to-teal-50 shadow-sm border-b border-emerald-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <div className="flex justify-between items-center mb-8">
               <div></div>
               <div className="text-center">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_meal-saver-4/artifacts/axw95nkf_image.png"
-                  alt="SaleSavor Logo"
-                  className="h-16 w-auto mx-auto mb-4"
-                />
+                <div className="mb-6">
+                  <h1 className="text-5xl font-bold text-emerald-800 sm:text-6xl md:text-7xl tracking-tight" style={{fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'}}>
+                    SaleSavor
+                  </h1>
+                  <div className="h-1 w-32 bg-gradient-to-r from-emerald-600 to-teal-600 mx-auto mt-2 rounded-full"></div>
+                </div>
               </div>
               <div className="flex gap-2">
                 <Dialog open={showProfile} onOpenChange={setShowProfile}>
