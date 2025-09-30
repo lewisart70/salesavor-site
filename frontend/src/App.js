@@ -183,7 +183,6 @@ const Home = () => {
     const [formData, setFormData] = useState({
       name: userProfile?.name || '',
       email: userProfile?.email || '',
-      age: userProfile?.age || '',
       household_size: userProfile?.household_size || 4,
       dietary_preferences: userProfile?.dietary_preferences || [],
       food_allergies: userProfile?.food_allergies || [],
