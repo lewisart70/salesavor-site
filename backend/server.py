@@ -414,7 +414,7 @@ CANADIAN_STORES = [
             "match_percentage": 100,
             "additional_discount": 10
         },
-        "flyer_url": "https://www.sobeys.com/en/flyers"
+        "flyer_url": "https://www.sobeys.com/flyer"
     },
     {
         "name": "Costco Wholesale", 
