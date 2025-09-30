@@ -519,11 +519,29 @@ const Home = () => {
                 >
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
-                      <img 
-                        src="https://images.unsplash.com/photo-1577745893556-e3d84603c572?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxncm9jZXJ5JTIwc2F2aW5nc3xlbnwwfHx8fDE3NTkyNTY4Mjh8MA&ixlib=rb-4.1.0&q=85"
-                        alt={store.name}
-                        className="h-12 w-12 rounded-lg object-cover"
-                      />
+                      <div 
+                        className="h-12 w-12 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-md"
+                        style={{ backgroundColor: store.brand_color || '#6B7280' }}
+                      >
+                        {store.logo_url ? (
+                          <img 
+                            src={store.logo_url}
+                            alt={`${store.chain} logo`}
+                            className="h-12 w-12 rounded-lg"
+                            onError={(e) => {
+                              // Fallback to first letter of chain if image fails
+                              e.target.style.display = 'none';
+                              e.target.nextElementSibling.style.display = 'flex';
+                            }}
+                          />
+                        ) : null}
+                        <span 
+                          className="h-12 w-12 rounded-lg flex items-center justify-center text-white font-bold text-lg"
+                          style={{ display: store.logo_url ? 'none' : 'flex' }}
+                        >
+                          {store.chain.charAt(0)}
+                        </span>
+                      </div>
                       <div className="flex-1">
                         <h3 className="font-semibold text-gray-900">{store.name}</h3>
                         <p className="text-sm text-gray-600">{store.chain}</p>
