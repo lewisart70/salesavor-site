@@ -603,7 +603,7 @@ const Home = () => {
                 <Button 
                   onClick={() => getStoreSales(selectedStore.id)}
                   data-testid="view-sales-btn"
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-xl shadow-lg transform transition-all hover:scale-105"
+                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-xl shadow-lg transform transition-all hover:scale-105"
                 >
                   View {selectedStore.name} Sales
                 </Button>
