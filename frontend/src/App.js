@@ -634,14 +634,35 @@ const Home = () => {
                 </Card>
               ))}
             </div>
-            <div className="text-center">
-              <Button 
-                onClick={generateRecipes} 
-                disabled={loading}
-                data-testid="generate-recipes-btn"
-              >
-                {loading ? 'Generating Recipes...' : 'Generate Meal Ideas'}
-              </Button>
+            <div className="text-center mt-8">
+              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6 max-w-2xl mx-auto">
+                <div className="flex items-center justify-center mb-3">
+                  <ChefHat className="h-6 w-6 text-emerald-600 mr-2" />
+                  <h3 className="font-bold text-emerald-800 text-lg">Ready for AI Meal Planning?</h3>
+                </div>
+                <p className="text-emerald-700 mb-4">
+                  Based on these amazing sale prices, we'll create personalized family-friendly recipes 
+                  that help you save money and bring delicious meals home!
+                </p>
+                <Button 
+                  onClick={generateRecipes} 
+                  disabled={loading}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl shadow-lg transform transition-all hover:scale-105 text-lg font-semibold"
+                  data-testid="generate-recipes-btn"
+                >
+                  {loading ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Generating Recipes...
+                    </>
+                  ) : (
+                    <>
+                      <ChefHat className="h-5 w-5 mr-2" />
+                      Generate Meal Ideas
+                    </>
+                  )}
+                </Button>
+              </div>
             </div>
           </div>
         )}
