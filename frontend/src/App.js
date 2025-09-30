@@ -423,25 +423,34 @@ const Home = () => {
               { key: 'sales', label: 'Sales', icon: DollarSign, completed: saleItems.length > 0 },
               { key: 'recipes', label: 'Recipes', icon: ChefHat, completed: generatedRecipes.length > 0 },
               { key: 'groceryList', label: 'List', icon: ShoppingCart, completed: groceryList !== null }
-            ].map(({ key, label, icon: Icon, completed }) => (
-              <button 
-                key={key} 
-                onClick={() => completed || currentStep === key ? setCurrentStep(key) : null}
-                disabled={!completed && currentStep !== key}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all ${
-                  currentStep === key 
-                    ? 'bg-green-100 text-green-700 ring-2 ring-green-300' 
-                    : completed 
-                      ? 'bg-blue-50 text-blue-600 hover:bg-blue-100 cursor-pointer' 
-                      : 'bg-gray-100 text-gray-500 cursor-not-allowed'
-                }`}>
-                <Icon className="h-4 w-4" />
-                <span className="text-sm font-medium">{label}</span>
-                {completed && currentStep !== key && (
-                  <span className="text-xs text-green-600">✓</span>
-                )}
-              </button>
-            ))}
+            ].map(({ key, label, icon: Icon, completed }) => {
+              const isAccessible = completed || currentStep === key || 
+                // Allow going back to previous steps
+                (key === 'location') ||
+                (key === 'stores' && userLocation !== null) ||
+                (key === 'sales' && nearbyStores.length > 0) ||
+                (key === 'recipes' && saleItems.length > 0);
+              
+              return (
+                <button 
+                  key={key} 
+                  onClick={() => isAccessible ? setCurrentStep(key) : null}
+                  disabled={!isAccessible}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all ${
+                    currentStep === key 
+                      ? 'bg-green-100 text-green-700 ring-2 ring-green-300' 
+                      : isAccessible 
+                        ? 'bg-blue-50 text-blue-600 hover:bg-blue-100 cursor-pointer' 
+                        : 'bg-gray-100 text-gray-500 cursor-not-allowed'
+                  }`}>
+                  <Icon className="h-4 w-4" />
+                  <span className="text-sm font-medium">{label}</span>
+                  {completed && currentStep !== key && (
+                    <span className="text-xs text-green-600">✓</span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
 
