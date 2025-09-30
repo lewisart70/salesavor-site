@@ -67,6 +67,15 @@ class UserProfileUpdate(BaseModel):
     cooking_skill: Optional[str] = None
     preferred_meal_types: Optional[List[str]] = None
 
+class FoodGuideRecommendation(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    country: str  # "US" or "Canada"
+    food_group: str  # "Vegetables and Fruits", "Grain Products", "Milk and Alternatives", "Meat and Alternatives"
+    daily_servings_adult: str  # e.g., "7-10 servings"
+    serving_examples: List[str]  # e.g., ["1 medium apple", "125ml (1/2 cup) fresh, frozen or canned vegetables"]
+    nutritional_benefits: List[str]
+    special_notes: Optional[str] = None
+
 class StoreLocation(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
