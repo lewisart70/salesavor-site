@@ -470,18 +470,18 @@ const Home = () => {
 
         {/* Location Step */}
         {currentStep === 'location' && (
-          <Card className="max-w-md mx-auto" data-testid="location-card">
-            <CardHeader>
-              <CardTitle className="text-center">Find Stores Near You</CardTitle>
+          <Card className="max-w-md mx-auto shadow-xl border-emerald-200" data-testid="location-card">
+            <CardHeader className="bg-emerald-50 border-b border-emerald-100">
+              <CardTitle className="text-center text-emerald-800">Find Stores Near You</CardTitle>
             </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-gray-600 mb-4">
+            <CardContent className="text-center p-6">
+              <p className="text-emerald-700 mb-6">
                 We'll find grocery stores within 25km of your location to show you the best deals
               </p>
               <Button 
                 onClick={getCurrentLocation} 
                 disabled={loading}
-                className="w-full"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl shadow-lg transform transition-all hover:scale-105"
                 data-testid="get-location-btn"
               >
                 {loading ? 'Finding Location...' : 'Get My Location'}
