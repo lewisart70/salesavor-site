@@ -233,7 +233,8 @@ def main():
         if failed_tests:
             print("\nFailed Tests:")
             for test in failed_tests:
-                print(f"  - {test['name']}: {test.get('error', f'Status {test.get(\"status_code\", \"unknown\")}')}")
+                error_msg = test.get('error', f'Status {test.get("status_code", "unknown")}')
+                print(f"  - {test['name']}: {error_msg}")
         
         return 1
 
