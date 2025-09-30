@@ -133,11 +133,19 @@ const Home = () => {
         // Update existing profile
         const response = await axios.put(`${API}/profile/${userProfile.id}`, profileData);
         setUserProfile(response.data);
+        // Update email field if profile has email
+        if (response.data.email && !emailAddress) {
+          setEmailAddress(response.data.email);
+        }
         toast.success('Profile updated successfully!');
       } else {
         // Create new profile
         const response = await axios.post(`${API}/profile`, profileData);
         setUserProfile(response.data);
+        // Set email field if profile has email
+        if (response.data.email && !emailAddress) {
+          setEmailAddress(response.data.email);
+        }
         toast.success('Profile created successfully!');
       }
       setShowProfile(false);
