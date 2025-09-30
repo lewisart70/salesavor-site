@@ -140,7 +140,7 @@ def prepare_for_mongo(data):
 # API Routes
 @api_router.get("/")
 async def root():
-    return {"message": "Grocery Savings App API"}
+    return {"message": "GoodBasket API - Your smart grocery savings companion"}
 
 @api_router.post("/stores/nearby", response_model=List[StoreLocation])
 async def get_nearby_stores(location: UserLocation, radius_km: int = 25):
