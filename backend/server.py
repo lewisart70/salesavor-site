@@ -220,16 +220,50 @@ async def get_store_sales(store_id: str):
 
 @api_router.post("/recipes/generate", response_model=List[Recipe])
 async def generate_recipes(request: Dict[str, Any]):
-    """Generate recipes based on available sale ingredients"""
+    """Generate recipes based on available sale ingredients and user profile"""
     try:
-        # Extract servings from request for dynamic recipe sizing
+        # Extract data from request
+        sale_items = request.get('sale_items', [])
+        dietary_preferences = request.get('dietary_preferences', [])
         servings = request.get('servings', 4)
+        profile_id = request.get('profile_id')  # Optional profile ID
         
-        # Note: sale_items and dietary_preferences available in request but using mock data for demo
+        # Get user profile if provided
+        user_profile = None
+        if profile_id:
+            try:
+                profile_data = await db.user_profiles.find_one({"id": profile_id})
+                if profile_data:
+                    user_profile = UserProfile(**profile_data)
+                    # Use profile preferences if no dietary preferences provided
+                    if not dietary_preferences:
+                        dietary_preferences = user_profile.dietary_preferences
+                    servings = user_profile.household_size if servings == 4 else servings
+            except Exception as e:
+                logging.warning(f"Could not fetch user profile {profile_id}: {str(e)}")
         
-        # For demo purposes, return mock recipes immediately to avoid LLM delays
-        # In production, uncomment the LLM integration below
+        # Filter recipes based on dietary preferences
+        def filter_recipes_by_diet(recipes: List[Recipe], dietary_prefs: List[str]) -> List[Recipe]:
+            if not dietary_prefs:
+                return recipes
+            
+            filtered_recipes = []
+            for recipe in recipes:
+                recipe_tags = [tag.lower() for tag in recipe.dietary_tags]
+                # Check if recipe matches any dietary preference
+                if any(pref.lower() in recipe_tags for pref in dietary_prefs):
+                    filtered_recipes.append(recipe)
+                # If no dietary tags but user prefers vegetarian/vegan, skip meat recipes
+                elif "vegetarian" in [p.lower() for p in dietary_prefs] and "meat" in recipe.name.lower():
+                    continue
+                elif "vegan" in [p.lower() for p in dietary_prefs] and any(word in recipe.name.lower() for word in ["chicken", "beef", "meat", "cheese"]):
+                    continue
+                else:
+                    filtered_recipes.append(recipe)
+            
+            return filtered_recipes if filtered_recipes else recipes  # Return all if none match
         
+        # For demo purposes, return mock recipes with profile-based filtering
         mock_recipes = [
             Recipe(
                 name="Budget-Friendly Beef Stir Fry",
@@ -251,7 +285,7 @@ async def generate_recipes(request: Dict[str, Any]):
                 prep_time=10,
                 cook_time=15,
                 servings=servings,
-                dietary_tags=["Gluten-Free"],
+                dietary_tags=[],
                 estimated_cost=10.97
             ),
             Recipe(
@@ -301,10 +335,37 @@ async def generate_recipes(request: Dict[str, Any]):
                 servings=servings,
                 dietary_tags=["Vegetarian", "Vegan", "Gluten-Free"],
                 estimated_cost=11.47
+            ),
+            Recipe(
+                name="Mediterranean Quinoa Salad",
+                description="Fresh and healthy gluten-free salad with Mediterranean flavors",
+                ingredients=[
+                    {"name": "Quinoa", "quantity": "2", "unit": "cups", "estimated_price": 3.50},
+                    {"name": "Bell Peppers", "quantity": "2", "unit": "each", "estimated_price": 3.98},
+                    {"name": "Tomatoes", "quantity": "3", "unit": "medium", "estimated_price": 2.49},
+                    {"name": "Onions", "quantity": "1", "unit": "small", "estimated_price": 0.75}
+                ],
+                instructions=[
+                    "Cook quinoa according to package directions and let cool",
+                    "Dice bell peppers, tomatoes, and onions",
+                    "Mix vegetables with cooked quinoa",
+                    "Drizzle with olive oil and lemon juice",
+                    "Season with salt, pepper, and dried herbs",
+                    "Chill for 30 minutes before serving"
+                ],
+                prep_time=25,
+                cook_time=15,
+                servings=servings,
+                dietary_tags=["Vegetarian", "Vegan", "Gluten-Free", "Dairy-Free"],
+                estimated_cost=10.72
             )
         ]
         
-        return mock_recipes
+        # Filter recipes based on dietary preferences
+        filtered_recipes = filter_recipes_by_diet(mock_recipes, dietary_preferences)
+        
+        # Return top 3 recipes
+        return filtered_recipes[:3]
         
         # TODO: Uncomment below for LLM integration when API is stable
         # from emergentintegrations.llm.chat import LlmChat, UserMessage
