@@ -395,7 +395,7 @@ CANADIAN_STORES = [
             "match_percentage": 100,
             "additional_discount": 0
         },
-        "flyer_url": "https://www.walmart.ca/en/flyers-offers"
+        "flyer_url": "https://www.walmart.ca/en/flyer?icid=dept_flyout_other_all_flyers_30792_LV3AV1UKYE"
     },
     {
         "name": "Sobeys Urban Fresh", 
