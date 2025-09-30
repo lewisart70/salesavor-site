@@ -377,9 +377,13 @@ const Home = () => {
           <div className="text-center">
             <div className="flex justify-between items-center mb-8">
               <div></div>
-              <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl" style={{fontFamily: 'Inter, sans-serif'}}>
-                <span className="text-green-600">Good</span>Basket
-              </h1>
+              <div className="text-center">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_meal-saver-4/artifacts/axw95nkf_image.png"
+                  alt="SaleSavor Logo"
+                  className="h-16 w-auto mx-auto mb-4"
+                />
+              </div>
               <div className="flex gap-2">
                 <Dialog open={showProfile} onOpenChange={setShowProfile}>
                   <DialogTrigger asChild>
