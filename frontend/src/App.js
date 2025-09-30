@@ -29,6 +29,8 @@ const Home = () => {
   const [currentStep, setCurrentStep] = useState('location');
   const [showProfile, setShowProfile] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
+  const [emailAddress, setEmailAddress] = useState('');
+  const [emailLoading, setEmailLoading] = useState(false);
 
   // Get user location
   const getCurrentLocation = () => {
