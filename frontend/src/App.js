@@ -389,7 +389,7 @@ const Home = () => {
               <div className="flex gap-2">
                 <Dialog open={showProfile} onOpenChange={setShowProfile}>
                   <DialogTrigger asChild>
-                    <Button variant="outline" size="sm" data-testid="profile-button" className="border-emerald-200 text-emerald-700 hover:bg-emerald-50">
+                    <Button variant="outline" size="sm" data-testid="profile-button" className="border-slate-300 text-slate-700 hover:bg-slate-50">
                       <User className="h-4 w-4 mr-2" />
                       {userProfile ? 'Profile' : 'Create Profile'}
                     </Button>
