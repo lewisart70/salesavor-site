@@ -434,7 +434,15 @@ const Home = () => {
               return (
                 <button 
                   key={key} 
-                  onClick={() => isAccessible ? setCurrentStep(key) : null}
+                  onClick={() => {
+                    if (isAccessible) {
+                      if (key === 'sales' && selectedStore && saleItems.length === 0) {
+                        // Auto-load sales when navigating to sales tab
+                        getStoreSales(selectedStore.id);
+                      }
+                      setCurrentStep(key);
+                    }
+                  }}
                   disabled={!isAccessible}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all ${
                     currentStep === key 
