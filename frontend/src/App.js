@@ -405,7 +405,7 @@ const Home = () => {
                 </Dialog>
               </div>
             </div>
-            <p className="mt-4 max-w-md mx-auto text-lg text-emerald-700 sm:text-xl md:mt-6 md:text-2xl md:max-w-3xl font-medium">
+            <p className="mt-4 max-w-md mx-auto text-lg text-slate-700 sm:text-xl md:mt-6 md:text-2xl md:max-w-3xl font-medium">
               Bringing Family Meals Home - For Less
             </p>
             <div className="mt-8 relative">
