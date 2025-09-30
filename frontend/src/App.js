@@ -42,7 +42,10 @@ const Home = () => {
           };
           setUserLocation(location);
           await findNearbyStores(location);
-          setCurrentStep('stores');
+          // Only auto-advance to stores if we're still on location step
+          if (currentStep === 'location') {
+            setCurrentStep('stores');
+          }
           setLoading(false);
           toast.success('Location found! Searching for nearby stores...');
         },
@@ -52,7 +55,10 @@ const Home = () => {
           const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
           setUserLocation(fallbackLocation);
           findNearbyStores(fallbackLocation);
-          setCurrentStep('stores');
+          // Only auto-advance to stores if we're still on location step
+          if (currentStep === 'location') {
+            setCurrentStep('stores');
+          }
           setLoading(false);
           toast.info('Using default location (Toronto) for demo');
         }
@@ -61,7 +67,10 @@ const Home = () => {
       const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
       setUserLocation(fallbackLocation);
       findNearbyStores(fallbackLocation);
-      setCurrentStep('stores');
+      // Only auto-advance to stores if we're still on location step
+      if (currentStep === 'location') {
+        setCurrentStep('stores');
+      }
       setLoading(false);
       toast.info('Geolocation not supported. Using Toronto for demo');
     }
