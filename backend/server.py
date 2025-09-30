@@ -295,14 +295,142 @@ AMERICAN_FOOD_GUIDE = [
 
 # Mock data for Canadian grocery stores
 CANADIAN_STORES = [
-    {"name": "Loblaws Superstore", "chain": "Loblaws", "address": "123 King Street, Toronto, ON", "latitude": 43.6532, "longitude": -79.3832, "phone": "(416) 555-0123"},
-    {"name": "Metro Plus", "chain": "Metro", "address": "456 Queen Street, Toronto, ON", "latitude": 43.6542, "longitude": -79.3822, "phone": "(416) 555-0124"},
-    {"name": "Food Basics", "chain": "Food Basics", "address": "789 Dundas Street, Toronto, ON", "latitude": 43.6552, "longitude": -79.3812, "phone": "(416) 555-0125"},
-    {"name": "Walmart Supercentre", "chain": "Walmart", "address": "321 Bloor Street, Toronto, ON", "latitude": 43.6562, "longitude": -79.3802, "phone": "(416) 555-0126"},
-    {"name": "Sobeys Urban Fresh", "chain": "Sobeys", "address": "654 College Street, Toronto, ON", "latitude": 43.6572, "longitude": -79.3792, "phone": "(416) 555-0127"},
-    {"name": "Costco Wholesale", "chain": "Costco", "address": "987 Yonge Street, Toronto, ON", "latitude": 43.6582, "longitude": -79.3782, "phone": "(416) 555-0128"},
-    {"name": "FreshMart", "chain": "FreshMart", "address": "147 Spadina Avenue, Toronto, ON", "latitude": 43.6592, "longitude": -79.3772, "phone": "(416) 555-0129"},
-    {"name": "ValueMart", "chain": "ValueMart", "address": "258 Bathurst Street, Toronto, ON", "latitude": 43.6602, "longitude": -79.3762, "phone": "(416) 555-0130"},
+    {
+        "name": "Loblaws Superstore", 
+        "chain": "Loblaws", 
+        "address": "123 King Street, Toronto, ON", 
+        "latitude": 43.6532, 
+        "longitude": -79.3832, 
+        "phone": "(416) 555-0123",
+        "price_match_policy": {
+            "has_price_match": True,
+            "policy_name": "We'll Match It!",
+            "description": "We'll match any local competitor's advertised price",
+            "conditions": ["Valid local competitor flyer required", "Same product brand and size", "Within 25km radius"],
+            "excluded_stores": ["Costco", "Wholesale clubs"],
+            "match_percentage": 100,
+            "additional_discount": 0
+        }
+    },
+    {
+        "name": "Metro Plus", 
+        "chain": "Metro", 
+        "address": "456 Queen Street, Toronto, ON", 
+        "latitude": 43.6542, 
+        "longitude": -79.3822, 
+        "phone": "(416) 555-0124",
+        "price_match_policy": {
+            "has_price_match": True,
+            "policy_name": "Metro Price Match",
+            "description": "We match competitor prices on identical items",
+            "conditions": ["Valid competitor flyer", "Same brand and size", "Local competitors only"],
+            "excluded_stores": ["Warehouse stores", "Online retailers"],
+            "match_percentage": 100,
+            "additional_discount": 0
+        }
+    },
+    {
+        "name": "Food Basics", 
+        "chain": "Food Basics", 
+        "address": "789 Dundas Street, Toronto, ON", 
+        "latitude": 43.6552, 
+        "longitude": -79.3812, 
+        "phone": "(416) 555-0125",
+        "price_match_policy": {
+            "has_price_match": False,
+            "policy_name": "No Price Match",
+            "description": "Everyday low prices - no price matching needed",
+            "conditions": [],
+            "excluded_stores": [],
+            "match_percentage": 0,
+            "additional_discount": 0
+        }
+    },
+    {
+        "name": "Walmart Supercentre", 
+        "chain": "Walmart", 
+        "address": "321 Bloor Street, Toronto, ON", 
+        "latitude": 43.6562, 
+        "longitude": -79.3802, 
+        "phone": "(416) 555-0126",
+        "price_match_policy": {
+            "has_price_match": True,
+            "policy_name": "Ad Match Guarantee",
+            "description": "We'll match any local competitor's advertised price",
+            "conditions": ["Valid local competitor ad", "Identical product", "Local store within 25km"],
+            "excluded_stores": ["Membership clubs", "Online-only retailers"],
+            "match_percentage": 100,
+            "additional_discount": 0
+        }
+    },
+    {
+        "name": "Sobeys Urban Fresh", 
+        "chain": "Sobeys", 
+        "address": "654 College Street, Toronto, ON", 
+        "latitude": 43.6572, 
+        "longitude": -79.3792, 
+        "phone": "(416) 555-0127",
+        "price_match_policy": {
+            "has_price_match": True,
+            "policy_name": "Price Match Promise",
+            "description": "We'll beat any competitor's price by 10%",
+            "conditions": ["Valid competitor flyer", "Same product", "Local competitors"],
+            "excluded_stores": ["Wholesale clubs", "Independent stores"],
+            "match_percentage": 100,
+            "additional_discount": 10
+        }
+    },
+    {
+        "name": "Costco Wholesale", 
+        "chain": "Costco", 
+        "address": "987 Yonge Street, Toronto, ON", 
+        "latitude": 43.6582, 
+        "longitude": -79.3782, 
+        "phone": "(416) 555-0128",
+        "price_match_policy": {
+            "has_price_match": False,
+            "policy_name": "No Price Match",
+            "description": "Membership warehouse pricing - no price matching",
+            "conditions": [],
+            "excluded_stores": [],
+            "match_percentage": 0,
+            "additional_discount": 0
+        }
+    },
+    {
+        "name": "FreshMart", 
+        "chain": "FreshMart", 
+        "address": "147 Spadina Avenue, Toronto, ON", 
+        "latitude": 43.6592, 
+        "longitude": -79.3772, 
+        "phone": "(416) 555-0129",
+        "price_match_policy": {
+            "has_price_match": True,
+            "policy_name": "Best Price Guarantee",
+            "description": "We'll match and beat competitor prices by 5%",
+            "conditions": ["Valid competitor ad", "Same item", "Within city limits"],
+            "excluded_stores": ["Warehouse stores"],
+            "match_percentage": 100,
+            "additional_discount": 5
+        }
+    },
+    {
+        "name": "ValueMart", 
+        "chain": "ValueMart", 
+        "address": "258 Bathurst Street, Toronto, ON", 
+        "latitude": 43.6602, 
+        "longitude": -79.3762, 
+        "phone": "(416) 555-0130",
+        "price_match_policy": {
+            "has_price_match": True,
+            "policy_name": "Price Match Plus",
+            "description": "We'll match competitor prices and add extra savings",
+            "conditions": ["Valid local competitor flyer", "Identical product", "Local stores only"],
+            "excluded_stores": ["Online retailers", "Membership stores"],
+            "match_percentage": 100,
+            "additional_discount": 3
+        }
+    }
 ]
 
 # Mock sale items
