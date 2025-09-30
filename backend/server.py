@@ -127,8 +127,170 @@ class GroceryList(BaseModel):
     total_savings: float
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
-# Mock data for Canadian grocery stores
-CANADIAN_STORES = [
+# Canadian and American Food Guide Data
+CANADIAN_FOOD_GUIDE = [
+    {
+        "country": "Canada",
+        "food_group": "Vegetables and Fruits",
+        "daily_servings_adult": "7-10 servings",
+        "serving_examples": [
+            "1 medium apple, orange, or pear",
+            "125ml (1/2 cup) fresh, frozen or canned vegetables",
+            "250ml (1 cup) raw leafy vegetables",
+            "125ml (1/2 cup) 100% fruit juice"
+        ],
+        "nutritional_benefits": [
+            "High in vitamins A and C",
+            "Good source of folate",
+            "High in fiber",
+            "Low in fat and calories"
+        ],
+        "special_notes": "Choose vegetables and fruits more often than juice"
+    },
+    {
+        "country": "Canada", 
+        "food_group": "Grain Products",
+        "daily_servings_adult": "6-8 servings",
+        "serving_examples": [
+            "1 slice bread",
+            "30g cold cereal",
+            "175ml (3/4 cup) hot cereal",
+            "125ml (1/2 cup) pasta or rice"
+        ],
+        "nutritional_benefits": [
+            "Good source of B vitamins",
+            "Source of fiber",
+            "Provides carbohydrates for energy",
+            "Iron and other minerals"
+        ],
+        "special_notes": "Make at least half of your grain products whole grain each day"
+    },
+    {
+        "country": "Canada",
+        "food_group": "Milk and Alternatives", 
+        "daily_servings_adult": "2-3 servings",
+        "serving_examples": [
+            "250ml (1 cup) milk",
+            "175ml (3/4 cup) yogurt",
+            "50g (1.5 oz) cheese",
+            "250ml (1 cup) fortified soy beverage"
+        ],
+        "nutritional_benefits": [
+            "Excellent source of calcium",
+            "Good source of protein",
+            "Source of vitamin A and D",
+            "Riboflavin and vitamin B12"
+        ],
+        "special_notes": "Choose lower fat milk products most often"
+    },
+    {
+        "country": "Canada",
+        "food_group": "Meat and Alternatives",
+        "daily_servings_adult": "2-3 servings", 
+        "serving_examples": [
+            "75g (2.5 oz) cooked meat, poultry or fish",
+            "175ml (3/4 cup) cooked beans",
+            "30ml (2 tbsp) peanut butter",
+            "2 eggs"
+        ],
+        "nutritional_benefits": [
+            "Excellent source of protein",
+            "Good source of iron",
+            "Source of zinc and B vitamins",
+            "Essential amino acids"
+        ],
+        "special_notes": "Choose lean meat and alternatives prepared with little or no added fat or salt"
+    }
+]
+
+AMERICAN_FOOD_GUIDE = [
+    {
+        "country": "US",
+        "food_group": "Vegetables",
+        "daily_servings_adult": "2-3 cups",
+        "serving_examples": [
+            "1 cup raw or cooked vegetables",
+            "2 cups raw leafy greens",
+            "1 cup vegetable juice"
+        ],
+        "nutritional_benefits": [
+            "Rich in vitamins A, C, and K",
+            "Good source of fiber",
+            "Provide folate and potassium",
+            "Low in calories"
+        ],
+        "special_notes": "Vary your vegetables - choose from all subgroups"
+    },
+    {
+        "country": "US",
+        "food_group": "Fruits", 
+        "daily_servings_adult": "1.5-2 cups",
+        "serving_examples": [
+            "1 cup fresh fruit",
+            "1 cup 100% fruit juice", 
+            "1/2 cup dried fruit"
+        ],
+        "nutritional_benefits": [
+            "Excellent source of vitamin C",
+            "Good source of fiber",
+            "Provide potassium",
+            "Natural antioxidants"
+        ],
+        "special_notes": "Choose whole fruits over juice when possible"
+    },
+    {
+        "country": "US",
+        "food_group": "Grains",
+        "daily_servings_adult": "6-8 ounce equivalents",
+        "serving_examples": [
+            "1 slice bread",
+            "1 cup ready-to-eat cereal",
+            "1/2 cup cooked rice or pasta"
+        ],
+        "nutritional_benefits": [
+            "Good source of B vitamins",
+            "Provide fiber (whole grains)",
+            "Source of iron",
+            "Carbohydrates for energy"
+        ],
+        "special_notes": "Make at least half your grains whole grains"
+    },
+    {
+        "country": "US",
+        "food_group": "Protein Foods",
+        "daily_servings_adult": "5-6.5 ounce equivalents",
+        "serving_examples": [
+            "1 oz cooked meat, poultry, or fish",
+            "1 egg",
+            "1 tbsp peanut butter",
+            "1/4 cup cooked beans"
+        ],
+        "nutritional_benefits": [
+            "Complete proteins",
+            "Good source of iron",
+            "Provide zinc and B vitamins",
+            "Essential amino acids"
+        ],
+        "special_notes": "Choose a variety of protein foods including seafood"
+    },
+    {
+        "country": "US",
+        "food_group": "Dairy",
+        "daily_servings_adult": "3 cups",
+        "serving_examples": [
+            "1 cup milk",
+            "8 oz yogurt",
+            "1.5 oz natural cheese"
+        ],
+        "nutritional_benefits": [
+            "Excellent source of calcium",
+            "Good source of protein",
+            "Provides vitamin D",
+            "Source of potassium"
+        ],
+        "special_notes": "Choose low-fat or fat-free dairy products"
+    }
+]
     {"name": "Loblaws Superstore", "chain": "Loblaws", "address": "123 King Street, Toronto, ON", "latitude": 43.6532, "longitude": -79.3832, "phone": "(416) 555-0123"},
     {"name": "Metro Plus", "chain": "Metro", "address": "456 Queen Street, Toronto, ON", "latitude": 43.6542, "longitude": -79.3822, "phone": "(416) 555-0124"},
     {"name": "Food Basics", "chain": "Food Basics", "address": "789 Dundas Street, Toronto, ON", "latitude": 43.6552, "longitude": -79.3812, "phone": "(416) 555-0125"},
