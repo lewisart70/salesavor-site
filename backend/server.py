@@ -395,6 +395,71 @@ async def generate_grocery_list(request: Dict[str, Any]):
     
     return grocery_list
 
+# User Profile Management Endpoints
+@api_router.post("/profile", response_model=UserProfile)
+async def create_profile(profile_data: UserProfileCreate):
+    """Create a new user profile"""
+    try:
+        profile = UserProfile(**profile_data.dict())
+        profile_dict = prepare_for_mongo(profile.dict())
+        await db.user_profiles.insert_one(profile_dict)
+        return profile
+    except Exception as e:
+        logging.error(f"Error creating profile: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error creating profile: {str(e)}")
+
+@api_router.get("/profile/{profile_id}", response_model=UserProfile)
+async def get_profile(profile_id: str):
+    """Get user profile by ID"""
+    try:
+        profile_data = await db.user_profiles.find_one({"id": profile_id})
+        if not profile_data:
+            raise HTTPException(status_code=404, detail="Profile not found")
+        return UserProfile(**profile_data)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.error(f"Error fetching profile: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching profile: {str(e)}")
+
+@api_router.put("/profile/{profile_id}", response_model=UserProfile)
+async def update_profile(profile_id: str, profile_update: UserProfileUpdate):
+    """Update user profile"""
+    try:
+        existing_profile = await db.user_profiles.find_one({"id": profile_id})
+        if not existing_profile:
+            raise HTTPException(status_code=404, detail="Profile not found")
+        
+        # Update only provided fields
+        update_data = {k: v for k, v in profile_update.dict().items() if v is not None}
+        update_data["updated_at"] = datetime.now(timezone.utc)
+        
+        update_dict = prepare_for_mongo(update_data)
+        await db.user_profiles.update_one({"id": profile_id}, {"$set": update_dict})
+        
+        # Return updated profile
+        updated_profile_data = await db.user_profiles.find_one({"id": profile_id})
+        return UserProfile(**updated_profile_data)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.error(f"Error updating profile: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error updating profile: {str(e)}")
+
+@api_router.delete("/profile/{profile_id}")
+async def delete_profile(profile_id: str):
+    """Delete user profile"""
+    try:
+        result = await db.user_profiles.delete_one({"id": profile_id})
+        if result.deleted_count == 0:
+            raise HTTPException(status_code=404, detail="Profile not found")
+        return {"message": "Profile deleted successfully"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.error(f"Error deleting profile: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error deleting profile: {str(e)}")
+
 # Include the router in the main app
 app.include_router(api_router)
 
