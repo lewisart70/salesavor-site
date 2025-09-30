@@ -511,8 +511,8 @@ const Home = () => {
               {nearbyStores.slice(0, 6).map((store) => (
                 <Card 
                   key={store.id} 
-                  className={`cursor-pointer transition-all ${
-                    selectedStore?.id === store.id ? 'ring-2 ring-green-500 bg-green-50' : 'hover:shadow-md'
+                  className={`cursor-pointer transition-all shadow-md hover:shadow-xl border-2 rounded-xl ${
+                    selectedStore?.id === store.id ? 'ring-2 ring-emerald-500 bg-emerald-50 border-emerald-300' : 'hover:shadow-lg border-emerald-100 hover:border-emerald-200'
                   }`}
                   onClick={() => setSelectedStore(store)}
                   data-testid={`store-card-${store.chain.toLowerCase()}`}
