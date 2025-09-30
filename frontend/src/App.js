@@ -696,7 +696,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            </div>
             <div className="grid lg:grid-cols-2 gap-6 mb-8">
               {generatedRecipes.map((recipe) => (
                 <Card 
