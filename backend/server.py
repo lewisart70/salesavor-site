@@ -464,7 +464,9 @@ CANADIAN_STORES = [
             "match_percentage": 100,
             "additional_discount": 5
         },
-        "flyer_url": "https://www.foodbasics.ca/flyer"
+        "flyer_url": "https://www.foodbasics.ca/flyer",
+        "logo_url": "https://via.placeholder.com/48x48/00AA44/FFFFFF?text=FM",
+        "brand_color": "#00AA44"
     },
     {
         "name": "ValueMart", 
