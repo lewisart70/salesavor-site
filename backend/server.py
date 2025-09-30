@@ -943,6 +943,48 @@ async def get_all_food_guides():
         logging.error(f"Error fetching food guides: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error fetching food guides: {str(e)}")
 
+# Weekly Flyer Integration Endpoints
+@api_router.get("/flyers/{store_chain}")
+async def get_store_flyer_url(store_chain: str):
+    """Get the current flyer URL for a specific store chain"""
+    try:
+        # Find the store and return its flyer URL
+        for store_data in CANADIAN_STORES:
+            if store_data["chain"].lower() == store_chain.lower():
+                return {
+                    "store_chain": store_data["chain"],
+                    "store_name": store_data["name"],
+                    "flyer_url": store_data.get("flyer_url", ""),
+                    "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                    "note": "Flyers typically update weekly on Thursdays"
+                }
+        
+        raise HTTPException(status_code=404, detail=f"Store chain '{store_chain}' not found")
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.error(f"Error fetching flyer URL: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching flyer URL: {str(e)}")
+
+@api_router.get("/flyers")
+async def get_all_flyer_urls():
+    """Get flyer URLs for all store chains"""
+    try:
+        flyers = []
+        for store_data in CANADIAN_STORES:
+            if store_data.get("flyer_url"):
+                flyers.append({
+                    "store_chain": store_data["chain"],
+                    "store_name": store_data["name"],
+                    "flyer_url": store_data["flyer_url"],
+                    "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                    "has_price_match": store_data.get("price_match_policy", {}).get("has_price_match", False)
+                })
+        return flyers
+    except Exception as e:
+        logging.error(f"Error fetching flyer URLs: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching flyer URLs: {str(e)}")
+
 # Include the router in the main app
 app.include_router(api_router)
 
