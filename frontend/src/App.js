@@ -235,28 +235,16 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <Label htmlFor="age">Age</Label>
-            <Input
-              id="age"
-              type="number"
-              value={formData.age}
-              onChange={(e) => setFormData(prev => ({ ...prev, age: parseInt(e.target.value) || '' }))}
-              placeholder="Your age"
-            />
-          </div>
-          <div>
-            <Label htmlFor="household_size">Household Size</Label>
-            <Input
-              id="household_size"
-              type="number"
-              min="1"
-              max="10"
-              value={formData.household_size}
-              onChange={(e) => setFormData(prev => ({ ...prev, household_size: parseInt(e.target.value) || 4 }))}
-            />
-          </div>
+        <div>
+          <Label htmlFor="household_size">Household Size</Label>
+          <Input
+            id="household_size"
+            type="number"
+            min="1"
+            max="10"
+            value={formData.household_size}
+            onChange={(e) => setFormData(prev => ({ ...prev, household_size: parseInt(e.target.value) || 4 }))}
+          />
         </div>
 
         <div>
