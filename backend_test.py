@@ -188,6 +188,162 @@ class GrocerySavingsAPITester:
             
         return success, response
 
+    def test_user_profile_crud(self):
+        """Test user profile CRUD operations"""
+        # Test data with dietary preferences as specified in review request
+        profile_data = {
+            "name": "Sarah Johnson",
+            "email": "sarah.test@example.com",
+            "household_size": 4,
+            "dietary_preferences": ["vegetarian", "gluten-free"],
+            "food_allergies": ["nuts"],
+            "cuisine_preferences": ["italian", "mediterranean"],
+            "budget_range": "moderate",
+            "cooking_skill": "intermediate",
+            "preferred_meal_types": ["dinner", "lunch"]
+        }
+        
+        # Test 1: Create Profile
+        create_success, create_response = self.run_test(
+            "Create User Profile",
+            "POST",
+            "profile",
+            200,
+            data=profile_data
+        )
+        
+        if not create_success:
+            return False, {}
+        
+        profile_id = create_response.get('id')
+        if not profile_id:
+            print("   Error: No profile ID returned from create")
+            return False, {}
+        
+        print(f"   Created profile with ID: {profile_id}")
+        
+        # Test 2: Get Profile
+        get_success, get_response = self.run_test(
+            "Get User Profile",
+            "GET",
+            f"profile/{profile_id}",
+            200
+        )
+        
+        if get_success:
+            print(f"   Retrieved profile: {get_response.get('name', 'Unknown')}")
+        
+        # Test 3: Update Profile
+        update_data = {
+            "household_size": 5,
+            "dietary_preferences": ["vegetarian", "gluten-free", "dairy-free"],
+            "budget_range": "premium"
+        }
+        
+        update_success, update_response = self.run_test(
+            "Update User Profile",
+            "PUT",
+            f"profile/{profile_id}",
+            200,
+            data=update_data
+        )
+        
+        if update_success:
+            print(f"   Updated profile household size: {update_response.get('household_size', 'Unknown')}")
+        
+        return create_success and get_success and update_success, {
+            'profile_id': profile_id,
+            'profile_data': create_response
+        }
+
+    def test_email_service(self, grocery_list_data=None):
+        """Test SendGrid email integration"""
+        if not grocery_list_data:
+            # Create mock grocery list data
+            grocery_list_data = {
+                "items": [
+                    {
+                        "ingredient": "Ground Beef (1 lb)",
+                        "quantity": "1.0 lb",
+                        "store_name": "Loblaws Superstore",
+                        "store_id": "store-123",
+                        "price": 6.99,
+                        "is_on_sale": True,
+                        "sale_price": 4.99
+                    },
+                    {
+                        "ingredient": "Pasta (500g)",
+                        "quantity": "1.0 package",
+                        "store_name": "Metro Plus",
+                        "store_id": "store-456",
+                        "price": 2.49,
+                        "is_on_sale": True,
+                        "sale_price": 1.49
+                    }
+                ],
+                "total_cost": 6.48,
+                "total_savings": 3.00
+            }
+        
+        email_request = {
+            "email": "test.user@example.com",
+            "grocery_list_data": grocery_list_data,
+            "user_name": "Test User"
+        }
+        
+        success, response = self.run_test(
+            "Email Grocery List",
+            "POST",
+            "email-grocery-list",
+            200,
+            data=email_request
+        )
+        
+        if success:
+            status = response.get('status', 'unknown')
+            message = response.get('message', 'No message')
+            print(f"   Email status: {status}")
+            print(f"   Message: {message}")
+        
+        return success, response
+
+    def test_recipe_generation_with_dietary_preferences(self):
+        """Test recipe generation with specific dietary preferences from review request"""
+        sale_items = [
+            {"name": "Bell Peppers (each)", "original_price": 2.99, "sale_price": 1.99, "discount_percentage": 33, "category": "Produce"},
+            {"name": "Carrots (2 lb bag)", "original_price": 2.99, "sale_price": 1.99, "discount_percentage": 33, "category": "Produce"},
+            {"name": "Rice (2 kg)", "original_price": 5.99, "sale_price": 3.99, "discount_percentage": 33, "category": "Pantry"},
+            {"name": "Pasta (500g)", "original_price": 2.49, "sale_price": 1.49, "discount_percentage": 40, "category": "Pantry"}
+        ]
+        
+        recipe_request = {
+            "sale_items": sale_items,
+            "dietary_preferences": ["vegetarian", "gluten-free"],  # As specified in review request
+            "servings": 4
+        }
+        
+        success, response = self.run_test(
+            "Generate Recipes with Dietary Preferences",
+            "POST",
+            "recipes/generate",
+            200,
+            data=recipe_request,
+            timeout=60
+        )
+        
+        if success and isinstance(response, list) and len(response) > 0:
+            print(f"   Generated {len(response)} vegetarian/gluten-free recipes")
+            for i, recipe in enumerate(response[:2]):  # Show first 2 recipes
+                name = recipe.get('name', 'Unknown')
+                tags = recipe.get('dietary_tags', [])
+                cost = recipe.get('estimated_cost', 0)
+                print(f"   Recipe {i+1}: {name} (${cost:.2f}) - Tags: {tags}")
+            return success, response
+        elif success:
+            print("   Warning: No recipes generated with dietary preferences")
+            
+        return success, response
+
 def main():
     print("🛒 Starting Grocery Savings App API Tests")
     print("=" * 50)
