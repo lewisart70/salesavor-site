@@ -345,44 +345,88 @@ class GrocerySavingsAPITester:
         return success, response
 
 def main():
-    print("🛒 Starting Grocery Savings App API Tests")
-    print("=" * 50)
+    print("🛒 Starting SaleSavor Backend API Tests")
+    print("Testing all critical endpoints after logo/UI updates")
+    print("=" * 60)
     
     tester = GrocerySavingsAPITester()
     
     # Test 1: Root endpoint
+    print("\n🔧 BASIC CONNECTIVITY TESTS")
     tester.test_root_endpoint()
     
-    # Test 2: Find nearby stores
+    # Test 2: Location & Stores - POST /api/stores/nearby
+    print("\n📍 LOCATION & STORES TESTS")
     stores_success, stores_data = tester.test_nearby_stores()
     
-    # Test 3: Get store sales (use first store if available)
+    # Test 3: Sales Data - GET /api/stores/{store_id}/sales
+    print("\n💰 SALES DATA TESTS")
     store_id = "test-store-123"  # Default test ID
     if stores_success and stores_data and len(stores_data) > 0:
         store_id = stores_data[0].get('id', store_id)
+        print(f"   Using store ID from nearby stores: {store_id}")
     
     sales_success, sales_data = tester.test_store_sales(store_id)
     
-    # Test 4: Generate recipes (use actual sale items if available)
+    # Test 4: Recipe Generation - POST /api/recipes/generate
+    print("\n🍳 RECIPE GENERATION TESTS")
     recipe_items = sales_data if sales_success and sales_data else None
     recipes_success, recipes_data = tester.test_recipe_generation(recipe_items)
     
-    # Test 5: Generate grocery list (use actual recipe IDs if available)
+    # Test 4b: Recipe generation with dietary preferences (as specified in review request)
+    dietary_recipes_success, dietary_recipes_data = tester.test_recipe_generation_with_dietary_preferences()
+    
+    # Test 5: Grocery List Generation - POST /api/grocery-list/generate
+    print("\n🛒 GROCERY LIST TESTS")
     recipe_ids = None
     if recipes_success and recipes_data:
         recipe_ids = [recipe.get('id') for recipe in recipes_data if recipe.get('id')]
     
-    tester.test_grocery_list_generation(recipe_ids)
+    grocery_success, grocery_data = tester.test_grocery_list_generation(recipe_ids)
+    
+    # Test 6: User Profiles - GET/POST/PUT /api/profile
+    print("\n👤 USER PROFILE TESTS")
+    profile_success, profile_data = tester.test_user_profile_crud()
+    
+    # Test 7: Email Service - POST /api/email-grocery-list
+    print("\n📧 EMAIL SERVICE TESTS")
+    email_grocery_data = grocery_data if grocery_success else None
+    email_success, email_response = tester.test_email_service(email_grocery_data)
     
     # Print final results
-    print("\n" + "=" * 50)
+    print("\n" + "=" * 60)
     print(f"📊 Test Results: {tester.tests_passed}/{tester.tests_run} tests passed")
     
+    # Print detailed results by category
+    print("\n📋 DETAILED RESULTS:")
+    print(f"   ✅ Basic Connectivity: {'PASS' if tester.test_results[0]['success'] else 'FAIL'}")
+    
+    stores_tests = [t for t in tester.test_results if 'Store' in t['name']]
+    stores_pass = all(t['success'] for t in stores_tests)
+    print(f"   📍 Location & Stores: {'PASS' if stores_pass else 'FAIL'}")
+    
+    recipe_tests = [t for t in tester.test_results if 'Recipe' in t['name']]
+    recipes_pass = all(t['success'] for t in recipe_tests)
+    print(f"   🍳 Recipe Generation: {'PASS' if recipes_pass else 'FAIL'}")
+    
+    grocery_tests = [t for t in tester.test_results if 'Grocery' in t['name']]
+    grocery_pass = all(t['success'] for t in grocery_tests)
+    print(f"   🛒 Grocery Lists: {'PASS' if grocery_pass else 'FAIL'}")
+    
+    profile_tests = [t for t in tester.test_results if 'Profile' in t['name']]
+    profile_pass = all(t['success'] for t in profile_tests)
+    print(f"   👤 User Profiles: {'PASS' if profile_pass else 'FAIL'}")
+    
+    email_tests = [t for t in tester.test_results if 'Email' in t['name']]
+    email_pass = all(t['success'] for t in email_tests)
+    print(f"   📧 Email Service: {'PASS' if email_pass else 'FAIL'}")
+    
     if tester.tests_passed == tester.tests_run:
-        print("🎉 All tests passed!")
+        print("\n🎉 All critical backend functionality is working correctly!")
+        print("   Logo/UI updates did not break any backend integration.")
         return 0
     else:
-        print("⚠️  Some tests failed. Check the details above.")
+        print("\n⚠️  Some backend tests failed. Issues detected:")
         
         # Print failed tests summary
         failed_tests = [test for test in tester.test_results if not test['success']]
@@ -390,7 +434,7 @@ def main():
             print("\nFailed Tests:")
             for test in failed_tests:
                 error_msg = test.get('error', f'Status {test.get("status_code", "unknown")}')
-                print(f"  - {test['name']}: {error_msg}")
+                print(f"  ❌ {test['name']}: {error_msg}")
         
         return 1
 
