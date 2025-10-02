@@ -116,6 +116,9 @@ backend:
         - working: true
           agent: "main"
           comment: "Backend is stable and working correctly"
+        - working: true
+          agent: "testing"
+          comment: "Comprehensive backend testing completed successfully. All critical API endpoints tested and working: 1) Location & Stores (POST /api/stores/nearby) - Returns 8 nearby stores with proper logos, price match policies, and flyer URLs. 2) Sales Data (GET /api/stores/{store_id}/sales) - Returns 10 sale items with correct pricing. 3) Recipe Generation (POST /api/recipes/generate) - AI recipe generation working, returns 3 recipes with dietary preference filtering. 4) Grocery List (POST /api/grocery-list/generate) - Optimized list generation with price matching logic working, generated 8 items with $25.22 total cost and $12.70 savings. 5) User Profiles (GET/POST/PUT /api/profile) - Full CRUD operations working with Toronto test data and dietary preferences [vegetarian, gluten-free]. 6) Email Service (POST /api/email-grocery-list) - SendGrid integration operational, successfully processes email requests. All 10/10 tests passed. Logo/UI updates did not break any backend integration."
 
 frontend:
   - task: "Fix hardcoded image URLs"
