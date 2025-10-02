@@ -423,7 +423,11 @@ const Home = () => {
                   <img 
                     src="https://customer-assets.emergentagent.com/job_meal-saver-4/artifacts/bt5hzyu6_image.png"
                     alt="SaleSavor Logo"
-                    className="h-20 w-auto mx-auto mb-2"
+                    className="h-24 w-auto mx-auto mb-2 max-w-xs object-contain"
+                    style={{
+                      filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+                      imageRendering: 'crisp-edges'
+                    }}
                   />
                 </div>
               </div>
