@@ -455,7 +455,7 @@ const Home = () => {
             </p>
             <div className="mt-8 relative">
               <img 
-                src="https://customer-assets.emergentagent.com/job_meal-saver-4/artifacts/5krd1yy6_getty-images-8p_pT19gLHs-unsplash.jpg" 
+                src={process.env.REACT_APP_HERO_IMAGE_URL} 
                 alt="Family Grocery Shopping" 
                 className="mx-auto h-80 w-full max-w-2xl object-cover rounded-2xl shadow-2xl border-4 border-white"
               />
