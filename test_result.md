@@ -166,6 +166,18 @@ frontend:
           agent: "main"
           comment: "✅ Updated color scheme to complement new logo. Changed backgrounds from slate/stone to blue/teal gradients, updated hero overlay to blue theme. Visual cohesion achieved."
 
+  - task: "Add legal disclaimers and price verification warnings"
+    implemented: true
+    working: true
+    file: "App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "✅ Added comprehensive legal disclaimers and price verification warnings. Included footer with service disclaimer, data/privacy notice, copyright. Added price verification warnings in sales section and location permission notice. Added estimate disclaimers in grocery list summary. Critical for production deployment."
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
