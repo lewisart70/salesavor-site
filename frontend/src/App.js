@@ -525,9 +525,25 @@ const Home = () => {
               <CardTitle className="text-center text-slate-800">Find Stores Near You</CardTitle>
             </CardHeader>
             <CardContent className="text-center p-6">
-              <p className="text-slate-700 mb-6">
+              <p className="text-slate-700 mb-4">
                 We'll find grocery stores within 25km of your location to show you the best deals
               </p>
+              
+              {/* Permission Notice */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 text-left">
+                <div className="flex items-start">
+                  <svg className="h-4 w-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                  </svg>
+                  <div className="text-xs text-blue-800">
+                    <p className="font-medium mb-1">Location Permission Required</p>
+                    <p>
+                      By clicking "Get My Location", you consent to sharing your location to find nearby grocery stores. 
+                      Your location data is used only for store discovery and is not stored or shared.
+                    </p>
+                  </div>
+                </div>
+              </div>
               <Button 
                 onClick={getCurrentLocation} 
                 disabled={loading}
