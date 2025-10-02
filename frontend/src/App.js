@@ -954,16 +954,24 @@ const Home = () => {
                 <div className="grid md:grid-cols-3 gap-4 text-center">
                   <div>
                     <p className="text-2xl font-bold text-green-600">${groceryList.total_cost.toFixed(2)}</p>
-                    <p className="text-sm text-gray-600">Total Cost</p>
+                    <p className="text-sm text-gray-600">Estimated Total</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-red-600">${groceryList.total_savings.toFixed(2)}</p>
-                    <p className="text-sm text-gray-600">You Save</p>
+                    <p className="text-sm text-gray-600">Estimated Savings</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-blue-600">{groceryList.items.length}</p>
                     <p className="text-sm text-gray-600">Items</p>
                   </div>
+                </div>
+                
+                {/* Estimate Disclaimer */}
+                <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <p className="text-xs text-yellow-800 text-center">
+                    💡 <strong>Estimates Only:</strong> Prices and savings are estimates. Always verify current prices, 
+                    availability, and store policies before shopping. Actual totals may vary.
+                  </p>
                 </div>
               </CardContent>
             </Card>
