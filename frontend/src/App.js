@@ -459,7 +459,7 @@ const Home = () => {
                 alt="Family Grocery Shopping" 
                 className="mx-auto h-80 w-full max-w-2xl object-cover rounded-2xl shadow-2xl border-4 border-white"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent rounded-2xl max-w-2xl mx-auto h-80"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 via-transparent to-transparent rounded-2xl max-w-2xl mx-auto h-80"></div>
             </div>
           </div>
         </div>
