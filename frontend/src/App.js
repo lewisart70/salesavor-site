@@ -421,7 +421,7 @@ const Home = () => {
               <div className="text-center">
                 <div className="mb-6">
                   <img 
-                    src="https://customer-assets.emergentagent.com/job_meal-saver-4/artifacts/bt5hzyu6_image.png"
+                    src={process.env.REACT_APP_LOGO_URL}
                     alt="SaleSavor Logo"
                     className="h-24 w-auto mx-auto mb-2 max-w-xs object-contain"
                     style={{
