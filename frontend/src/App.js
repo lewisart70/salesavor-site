@@ -411,9 +411,9 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-stone-50 to-neutral-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-white via-gray-50 to-stone-50 shadow-sm border-b border-gray-200">
+      <div className="relative bg-gradient-to-br from-white via-blue-50 to-teal-50 shadow-sm border-b border-blue-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <div className="flex justify-between items-center mb-8">
