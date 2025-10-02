@@ -1037,6 +1037,71 @@ const Home = () => {
       </div>
 
       <Toaster position="bottom-right" />
+      
+      {/* Legal Disclaimers Footer */}
+      <footer className="bg-slate-100 border-t border-slate-200 mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Price Verification Warning */}
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+            <div className="flex items-start">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-yellow-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-semibold text-yellow-800">
+                  ⚠️ Important: Always Verify Prices Before Shopping
+                </h3>
+                <p className="text-sm text-yellow-700 mt-1">
+                  Prices and promotions shown are estimates based on available data and may not reflect current in-store prices. 
+                  Always verify prices, availability, and promotional terms directly with the store before making purchases. 
+                  Store policies and prices change frequently.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Legal Disclaimers */}
+          <div className="grid md:grid-cols-2 gap-6 text-sm text-slate-600">
+            <div>
+              <h4 className="font-semibold text-slate-800 mb-2">Service Disclaimer</h4>
+              <p className="mb-3">
+                SaleSavor is a grocery planning assistant that aggregates publicly available sales information and generates meal suggestions. 
+                We do not guarantee price accuracy, product availability, or store policy compliance.
+              </p>
+              <p className="mb-3">
+                <strong>Use of this service is at your own risk.</strong> We are not responsible for any financial loss, 
+                inconvenience, or issues arising from reliance on the information provided.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-slate-800 mb-2">Data & Privacy</h4>
+              <p className="mb-3">
+                By using SaleSavor, you consent to the collection and use of location data to find nearby stores and 
+                dietary preferences to personalize recommendations. We do not store payment information or share personal data with third parties.
+              </p>
+              <p className="mb-3">
+                Recipe suggestions are generated using AI and may not be suitable for all dietary restrictions or allergies. 
+                Always review ingredients carefully, especially if you have food allergies or medical dietary requirements.
+              </p>
+            </div>
+          </div>
+
+          {/* Terms & Contact */}
+          <div className="border-t border-slate-200 mt-6 pt-6 text-center">
+            <p className="text-xs text-slate-500">
+              © {new Date().getFullYear()} SaleSavor. This service is provided "as-is" without warranties of any kind. 
+              By using this application, you agree to verify all pricing information independently and acknowledge that 
+              store policies, prices, and availability may differ from what is displayed.
+            </p>
+            <p className="text-xs text-slate-500 mt-2">
+              For questions or concerns, please contact your local grocery stores directly for the most accurate pricing and policy information.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
