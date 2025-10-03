@@ -423,7 +423,7 @@ const Home = () => {
                   <img 
                     src={process.env.REACT_APP_LOGO_URL}
                     alt="SaleSavor Logo"
-                    className="h-24 w-auto mx-auto mb-2 max-w-xs object-contain"
+                    className="h-48 w-auto mx-auto mb-2 max-w-lg object-contain"
                     style={{
                       filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
                       imageRendering: 'crisp-edges'
