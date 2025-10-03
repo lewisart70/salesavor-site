@@ -53,6 +53,17 @@ const Home = () => {
         },
         (error) => {
           console.error('Error getting location:', error);
+          let errorMessage = 'Location access denied. Using Toronto for demo.';
+          
+          // Provide specific error messages
+          if (error.code === 1) {
+            errorMessage = 'Location permission denied. Using Toronto, Canada for demo.';
+          } else if (error.code === 2) {
+            errorMessage = 'Location unavailable. Using Toronto, Canada for demo.';
+          } else if (error.code === 3) {
+            errorMessage = 'Location timeout. Using Toronto, Canada for demo.';
+          }
+          
           // Fallback to Toronto coordinates for demo
           const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
           setUserLocation(fallbackLocation);
@@ -62,7 +73,7 @@ const Home = () => {
             setCurrentStep('stores');
           }
           setLoading(false);
-          toast.info('Using default location (Toronto) for demo');
+          toast.info(errorMessage);
         }
       );
     } else {
