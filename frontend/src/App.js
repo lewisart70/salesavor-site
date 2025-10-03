@@ -636,6 +636,16 @@ const Home = () => {
               </p>
             </div>
             
+            {/* AdSense Banner Ad */}
+            <div className="mb-6 max-w-4xl mx-auto">
+              <AdSenseAd 
+                adSlot="1234567890"
+                adFormat="auto"
+                style={{ minHeight: '250px' }}
+                className="text-center"
+              />
+            </div>
+            
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               {nearbyStores.slice(0, 6).map((store) => (
                 <Card 
