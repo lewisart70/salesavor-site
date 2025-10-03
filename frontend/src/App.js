@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { MapPin, ShoppingCart, ChefHat, DollarSign, Clock, Users, User, Settings, ExternalLink } from 'lucide-react';
 import { Toaster } from './components/ui/sonner';
 import { toast } from 'sonner';
+import AdSenseAd from './components/AdSenseAd';
 import './App.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
