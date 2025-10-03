@@ -766,7 +766,7 @@ const Home = () => {
                 Sales may have ended, items may be out of stock, or additional conditions may apply.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               {saleItems.map((item) => (
                 <Card key={item.id} data-testid={`sale-item-${item.name.toLowerCase().replace(/\s+/g, '-')}`}>
                   <CardContent className="p-4">
@@ -786,6 +786,20 @@ const Home = () => {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+            
+            {/* AdSense In-Feed Ad */}
+            <div className="mb-8 max-w-4xl mx-auto">
+              <div className="text-center mb-2">
+                <span className="text-xs text-gray-500">Advertisement</span>
+              </div>
+              <AdSenseAd 
+                adSlot="9876543210"
+                adFormat="fluid"
+                adLayout="in-article"
+                style={{ minHeight: '200px' }}
+                className="bg-gray-50 rounded-lg p-4"
+              />
             </div>
             <div className="text-center mt-8">
               <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6 max-w-2xl mx-auto">
