@@ -201,9 +201,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Fix hardcoded image URLs"
-    - "Integrate new professional logos"
-    - "Update color scheme to match new branding"
+    - "AdSense Integration"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
