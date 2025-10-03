@@ -438,44 +438,44 @@ const Home = () => {
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="text-center">
-              <div className="flex justify-between items-center mb-8">
-                <div></div>
-                <div className="text-center relative z-10">
-                  <div className="mb-6">
-                    {/* Logo Container with Enhanced Styling */}
-                    <div className="relative inline-block">
-                      <div className="absolute inset-0 bg-white rounded-2xl shadow-xl blur-sm opacity-60"></div>
-                      <div className="relative bg-white rounded-2xl p-6 shadow-2xl border border-slate-200">
-                        <img 
-                          src={process.env.REACT_APP_LOGO_URL}
-                          alt="SaleSavor Logo"
-                          className="h-48 w-auto mx-auto object-contain"
-                          style={{
-                            filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-                            imageRendering: 'crisp-edges'
-                          }}
-                        />
-                      </div>
+              {/* Profile Button - Positioned Absolutely */}
+              <div className="absolute top-4 right-4 z-20">
+                <Dialog open={showProfile} onOpenChange={setShowProfile}>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" size="sm" data-testid="profile-button" className="border-emerald-400 text-emerald-700 hover:bg-emerald-50 bg-emerald-100/80 backdrop-blur-sm shadow-lg">
+                      <User className="h-4 w-4 mr-2" />
+                      {userProfile ? 'Profile' : 'Create Profile'}
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle>
+                        {userProfile ? 'Update Your Profile' : 'Create Your Profile'}
+                      </DialogTitle>
+                    </DialogHeader>
+                    <ProfileForm />
+                  </DialogContent>
+                </Dialog>
+              </div>
+              
+              {/* Centered Logo Section */}
+              <div className="text-center relative z-10 pt-8">
+                <div className="mb-6">
+                  {/* Logo Container with Enhanced Styling */}
+                  <div className="relative inline-block">
+                    <div className="absolute inset-0 bg-white rounded-2xl shadow-xl blur-sm opacity-60"></div>
+                    <div className="relative bg-white rounded-2xl p-6 shadow-2xl border border-slate-200">
+                      <img 
+                        src={process.env.REACT_APP_LOGO_URL}
+                        alt="SaleSavor Logo"
+                        className="h-48 w-auto mx-auto object-contain"
+                        style={{
+                          filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+                          imageRendering: 'crisp-edges'
+                        }}
+                      />
                     </div>
                   </div>
-                </div>
-                <div className="flex gap-2 relative z-10">
-                  <Dialog open={showProfile} onOpenChange={setShowProfile}>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" size="sm" data-testid="profile-button" className="border-slate-300 text-slate-700 hover:bg-slate-50 bg-white/80 backdrop-blur-sm shadow-md">
-                        <User className="h-4 w-4 mr-2" />
-                        {userProfile ? 'Profile' : 'Create Profile'}
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle>
-                          {userProfile ? 'Update Your Profile' : 'Create Your Profile'}
-                        </DialogTitle>
-                      </DialogHeader>
-                      <ProfileForm />
-                    </DialogContent>
-                  </Dialog>
                 </div>
               </div>
               
