@@ -425,12 +425,12 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-teal-50">
       {/* Hero Section */}
-      <div className="relative">
+      <div className="relative bg-gradient-to-b from-yellow-50 to-white">
         {/* Decorative Header Bar */}
         <div className="bg-gradient-to-r from-teal-600 via-blue-600 to-emerald-600 h-2"></div>
         
         {/* Main Header Section */}
-        <div className="relative bg-gradient-to-br from-white via-slate-50 to-blue-50 shadow-lg">
+        <div className="relative bg-gradient-to-br from-yellow-50 via-slate-50 to-blue-50 shadow-lg">
           {/* Decorative Elements */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-teal-100/30 to-transparent rounded-full -translate-y-20 translate-x-20"></div>
