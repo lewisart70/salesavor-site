@@ -1099,6 +1099,19 @@ const Home = () => {
             </div>
 
             <div className="text-center mt-8">
+              {/* AdSense Rectangle Ad */}
+              <div className="mb-6 max-w-md mx-auto">
+                <div className="text-center mb-2">
+                  <span className="text-xs text-gray-500">Advertisement</span>
+                </div>
+                <AdSenseAd 
+                  adSlot="1357924680"
+                  adFormat="rectangle"
+                  style={{ width: '300px', height: '250px' }}
+                  className="mx-auto"
+                />
+              </div>
+
               {/* Email Grocery List Section */}
               <Card className="mb-6 max-w-md mx-auto">
                 <CardHeader className="bg-teal-50 border-b border-teal-200">
