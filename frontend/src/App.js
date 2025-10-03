@@ -1176,6 +1176,21 @@ const Home = () => {
 
       <Toaster position="bottom-right" />
       
+      {/* Bottom AdSense Banner */}
+      <div className="bg-white py-8 border-t border-gray-200">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-2">
+            <span className="text-xs text-gray-500">Advertisement</span>
+          </div>
+          <AdSenseAd 
+            adSlot="2468135790"
+            adFormat="auto"
+            style={{ minHeight: '100px' }}
+            className="text-center"
+          />
+        </div>
+      </div>
+      
       {/* Legal Disclaimers Footer */}
       <footer className="bg-slate-100 border-t border-slate-200 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
