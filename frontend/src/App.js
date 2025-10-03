@@ -555,14 +555,31 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <Button 
-                onClick={getCurrentLocation} 
-                disabled={loading}
-                className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-xl shadow-lg transform transition-all hover:scale-105"
-                data-testid="get-location-btn"
-              >
-                {loading ? 'Finding Location...' : 'Get My Location'}
-              </Button>
+              <div className="space-y-3">
+                <Button 
+                  onClick={getCurrentLocation} 
+                  disabled={loading}
+                  className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-xl shadow-lg transform transition-all hover:scale-105"
+                  data-testid="get-location-btn"
+                >
+                  {loading ? 'Finding Location...' : 'Get My Location'}
+                </Button>
+                
+                <Button 
+                  onClick={() => {
+                    // Use Toronto as default for demo
+                    const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
+                    setUserLocation(fallbackLocation);
+                    findNearbyStores(fallbackLocation);
+                    setCurrentStep('stores');
+                    toast.success('Using Toronto, Canada for demo');
+                  }}
+                  variant="outline"
+                  className="w-full border-teal-300 text-teal-700 hover:bg-teal-50"
+                >
+                  🇨🇦 Use Toronto (Demo)
+                </Button>
+              </div>
             </CardContent>
           </Card>
         )}
