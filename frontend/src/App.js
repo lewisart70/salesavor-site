@@ -424,56 +424,90 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-teal-50">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-green-50 via-blue-50 to-teal-50 shadow-sm border-b border-blue-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <div className="flex justify-between items-center mb-8">
-              <div></div>
-              <div className="text-center">
-                <div className="mb-6">
-                  <img 
-                    src={process.env.REACT_APP_LOGO_URL}
-                    alt="SaleSavor Logo"
-                    className="h-48 w-auto mx-auto mb-2 max-w-lg object-contain"
-                    style={{
-                      filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-                      imageRendering: 'crisp-edges'
-                    }}
-                  />
+      <div className="relative">
+        {/* Decorative Header Bar */}
+        <div className="bg-gradient-to-r from-teal-600 via-blue-600 to-emerald-600 h-2"></div>
+        
+        {/* Main Header Section */}
+        <div className="relative bg-gradient-to-br from-white via-slate-50 to-blue-50 shadow-lg">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-teal-100/30 to-transparent rounded-full -translate-y-20 translate-x-20"></div>
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-100/30 to-transparent rounded-full translate-y-20 -translate-x-20"></div>
+          </div>
+          
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="text-center">
+              <div className="flex justify-between items-center mb-8">
+                <div></div>
+                <div className="text-center relative z-10">
+                  <div className="mb-6">
+                    {/* Logo Container with Enhanced Styling */}
+                    <div className="relative inline-block">
+                      <div className="absolute inset-0 bg-white rounded-2xl shadow-xl blur-sm opacity-60"></div>
+                      <div className="relative bg-white rounded-2xl p-6 shadow-2xl border border-slate-200">
+                        <img 
+                          src={process.env.REACT_APP_LOGO_URL}
+                          alt="SaleSavor Logo"
+                          className="h-48 w-auto mx-auto object-contain"
+                          style={{
+                            filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+                            imageRendering: 'crisp-edges'
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2 relative z-10">
+                  <Dialog open={showProfile} onOpenChange={setShowProfile}>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" size="sm" data-testid="profile-button" className="border-slate-300 text-slate-700 hover:bg-slate-50 bg-white/80 backdrop-blur-sm shadow-md">
+                        <User className="h-4 w-4 mr-2" />
+                        {userProfile ? 'Profile' : 'Create Profile'}
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle>
+                          {userProfile ? 'Update Your Profile' : 'Create Your Profile'}
+                        </DialogTitle>
+                      </DialogHeader>
+                      <ProfileForm />
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <Dialog open={showProfile} onOpenChange={setShowProfile}>
-                  <DialogTrigger asChild>
-                    <Button variant="outline" size="sm" data-testid="profile-button" className="border-slate-300 text-slate-700 hover:bg-slate-50">
-                      <User className="h-4 w-4 mr-2" />
-                      {userProfile ? 'Profile' : 'Create Profile'}
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-                    <DialogHeader>
-                      <DialogTitle>
-                        {userProfile ? 'Update Your Profile' : 'Create Your Profile'}
-                      </DialogTitle>
-                    </DialogHeader>
-                    <ProfileForm />
-                  </DialogContent>
-                </Dialog>
+              
+              {/* Tagline with Enhanced Styling */}
+              <div className="relative z-10">
+                <p className="mt-4 max-w-md mx-auto text-lg text-slate-800 sm:text-xl md:mt-6 md:text-2xl md:max-w-3xl font-semibold bg-white/70 backdrop-blur-sm rounded-xl px-6 py-3 shadow-lg border border-white/50">
+                  Bringing Family Meals Home - For Less
+                </p>
               </div>
-            </div>
-            <p className="mt-4 max-w-md mx-auto text-lg text-slate-700 sm:text-xl md:mt-6 md:text-2xl md:max-w-3xl font-medium">
-              Bringing Family Meals Home - For Less
-            </p>
-            <div className="mt-8 relative">
-              <img 
-                src={process.env.REACT_APP_HERO_IMAGE_URL} 
-                alt="Family Grocery Shopping" 
-                className="mx-auto h-80 w-full max-w-2xl object-cover rounded-2xl shadow-2xl border-4 border-white"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 via-transparent to-transparent rounded-2xl max-w-2xl mx-auto h-80"></div>
+              
+              <div className="mt-8 relative z-10">
+                <div className="relative inline-block">
+                  <img 
+                    src={process.env.REACT_APP_HERO_IMAGE_URL} 
+                    alt="Family Grocery Shopping" 
+                    className="mx-auto h-80 w-full max-w-2xl object-cover rounded-2xl shadow-2xl border-4 border-white"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-900/20 via-transparent to-transparent rounded-2xl"></div>
+                  
+                  {/* Decorative Corner Elements */}
+                  <div className="absolute -top-3 -left-3 w-6 h-6 bg-teal-500 rounded-full shadow-lg"></div>
+                  <div className="absolute -top-3 -right-3 w-6 h-6 bg-blue-500 rounded-full shadow-lg"></div>
+                  <div className="absolute -bottom-3 -left-3 w-6 h-6 bg-emerald-500 rounded-full shadow-lg"></div>
+                  <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-cyan-500 rounded-full shadow-lg"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        
+        {/* Bottom Decorative Border */}
+        <div className="h-1 bg-gradient-to-r from-emerald-400 via-teal-500 to-blue-500"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
