@@ -49,7 +49,6 @@ const Home = () => {
           if (currentStep === 'location') {
             setCurrentStep('stores');
           }
-          setLoading(false);
           toast.success('Location found! Searching for nearby stores...');
         },
         (error) => {
