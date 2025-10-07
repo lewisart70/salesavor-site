@@ -33,57 +33,81 @@ const Home = () => {
   const [emailAddress, setEmailAddress] = useState('');
   const [emailLoading, setEmailLoading] = useState(false);
 
-  // Get user location
-  const getCurrentLocation = () => {
+  // Get user's current location
+  const getCurrentLocation = async () => {
     setLoading(true);
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const location = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-          };
-          setUserLocation(location);
-          await findNearbyStores(location);
-          // Only auto-advance to stores if we're still on location step
-          if (currentStep === 'location') {
-            setCurrentStep('stores');
-          }
-          toast.success('Location found! Searching for nearby stores...');
-        },
-        async (error) => {
-          console.error('Error getting location:', error);
-          let errorMessage = 'Location access denied. Using Toronto for demo.';
-          
-          // Provide specific error messages
-          if (error.code === 1) {
-            errorMessage = 'Location permission denied. Using Toronto, Canada for demo.';
-          } else if (error.code === 2) {
-            errorMessage = 'Location unavailable. Using Toronto, Canada for demo.';
-          } else if (error.code === 3) {
-            errorMessage = 'Location timeout. Using Toronto, Canada for demo.';
-          }
-          
-          // Fallback to Toronto coordinates for demo
-          const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
-          setUserLocation(fallbackLocation);
-          await findNearbyStores(fallbackLocation);
-          // Only auto-advance to stores if we're still on location step
-          if (currentStep === 'location') {
-            setCurrentStep('stores');
-          }
-          toast.info(errorMessage);
-        }
-      );
-    } else {
+    
+    if (!navigator.geolocation) {
+      // Geolocation not supported
       const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
       setUserLocation(fallbackLocation);
       await findNearbyStores(fallbackLocation);
-      // Only auto-advance to stores if we're still on location step
       if (currentStep === 'location') {
         setCurrentStep('stores');
       }
       toast.info('Geolocation not supported. Using Toronto for demo');
+      return;
+    }
+
+    // Geolocation options
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000, // 10 seconds
+      maximumAge: 300000 // 5 minutes
+    };
+
+    const handleSuccess = async (position) => {
+      try {
+        const location = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        };
+        setUserLocation(location);
+        await findNearbyStores(location);
+        if (currentStep === 'location') {
+          setCurrentStep('stores');
+        }
+        toast.success('Location found! Searching for nearby stores...');
+      } catch (error) {
+        console.error('Error processing location:', error);
+        await handleLocationError({ code: 4, message: 'Error processing location' });
+      }
+    };
+
+    const handleLocationError = async (error) => {
+      console.error('Geolocation error:', error);
+      let errorMessage = 'Location access denied. Using Toronto for demo.';
+      
+      switch (error.code) {
+        case 1: // PERMISSION_DENIED
+          errorMessage = '📍 Location permission denied. Please allow location access or use Toronto demo.';
+          break;
+        case 2: // POSITION_UNAVAILABLE
+          errorMessage = '📍 Location unavailable. Using Toronto, Canada for demo.';
+          break;
+        case 3: // TIMEOUT
+          errorMessage = '📍 Location request timed out. Using Toronto, Canada for demo.';
+          break;
+        default:
+          errorMessage = '📍 Unable to get location. Using Toronto, Canada for demo.';
+      }
+      
+      // Fallback to Toronto coordinates
+      const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
+      setUserLocation(fallbackLocation);
+      await findNearbyStores(fallbackLocation);
+      if (currentStep === 'location') {
+        setCurrentStep('stores');
+      }
+      toast.info(errorMessage);
+    };
+
+    // Try to get current position
+    try {
+      navigator.geolocation.getCurrentPosition(handleSuccess, handleLocationError, options);
+    } catch (error) {
+      console.error('Geolocation API error:', error);
+      await handleLocationError({ code: 4, message: 'Geolocation API error' });
     }
   };
 
