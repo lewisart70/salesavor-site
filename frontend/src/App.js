@@ -51,7 +51,7 @@ const Home = () => {
           }
           toast.success('Location found! Searching for nearby stores...');
         },
-        (error) => {
+        async (error) => {
           console.error('Error getting location:', error);
           let errorMessage = 'Location access denied. Using Toronto for demo.';
           
