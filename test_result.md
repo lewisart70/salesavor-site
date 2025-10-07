@@ -216,7 +216,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "AdSense Integration"
+    - "Fix Location → Stores Flow Issue"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
