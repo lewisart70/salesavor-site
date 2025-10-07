@@ -619,7 +619,40 @@ const Home = () => {
           </Card>
         )}
 
-        {/* Stores Step */}
+        {/* Stores Step - Loading State */}
+        {currentStep === 'stores' && nearbyStores.length === 0 && loading && (
+          <Card className="max-w-md mx-auto shadow-xl border-slate-200" data-testid="stores-loading">
+            <CardContent className="text-center p-6">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
+              <h3 className="text-lg font-semibold text-slate-800 mb-2">Locating Stores</h3>
+              <p className="text-slate-600">Finding grocery stores near you...</p>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Stores Step - Empty State */}
+        {currentStep === 'stores' && nearbyStores.length === 0 && !loading && (
+          <Card className="max-w-md mx-auto shadow-xl border-slate-200" data-testid="stores-empty">
+            <CardContent className="text-center p-6">
+              <div className="text-slate-400 mb-4">
+                <ShoppingCart className="h-16 w-16 mx-auto" />
+              </div>
+              <h3 className="text-lg font-semibold text-slate-800 mb-2">No Stores Found</h3>
+              <p className="text-slate-600 mb-4">
+                We couldn't find any grocery stores within 25km of your location.
+              </p>
+              <Button 
+                onClick={() => setCurrentStep('location')}
+                variant="outline"
+                className="border-teal-300 text-teal-700 hover:bg-teal-50"
+              >
+                Try Different Location
+              </Button>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Stores Step - With Stores */}
         {currentStep === 'stores' && nearbyStores.length > 0 && (
           <div data-testid="stores-section">
             <h2 className="text-2xl font-bold text-center mb-6">Nearby Grocery Stores</h2>
