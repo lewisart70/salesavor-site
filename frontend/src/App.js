@@ -67,12 +67,11 @@ const Home = () => {
           // Fallback to Toronto coordinates for demo
           const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
           setUserLocation(fallbackLocation);
-          findNearbyStores(fallbackLocation);
+          await findNearbyStores(fallbackLocation);
           // Only auto-advance to stores if we're still on location step
           if (currentStep === 'location') {
             setCurrentStep('stores');
           }
-          setLoading(false);
           toast.info(errorMessage);
         }
       );
