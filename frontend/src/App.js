@@ -604,11 +604,11 @@ const Home = () => {
                 </Button>
                 
                 <Button 
-                  onClick={() => {
+                  onClick={async () => {
                     // Use Toronto as default for demo
                     const fallbackLocation = { latitude: 43.6532, longitude: -79.3832 };
                     setUserLocation(fallbackLocation);
-                    findNearbyStores(fallbackLocation);
+                    await findNearbyStores(fallbackLocation);
                     setCurrentStep('stores');
                     toast.success('Using Toronto, Canada for demo');
                   }}
