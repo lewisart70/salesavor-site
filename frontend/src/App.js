@@ -93,16 +93,22 @@ const Home = () => {
   // Find nearby stores
   const findNearbyStores = async (location) => {
     try {
+      setLoading(true);
       const response = await axios.post(`${API}/stores/nearby`, location);
       setNearbyStores(response.data);
       if (response.data.length > 0) {
         const firstStore = response.data[0];
         setSelectedStore(firstStore);
-        // Remove automatic progression - let user click to view sales
+        toast.success(`Found ${response.data.length} nearby stores!`);
+      } else {
+        toast.info('No stores found in your area. Try a different location.');
       }
     } catch (error) {
       console.error('Error finding stores:', error);
-      toast.error('Error finding nearby stores');
+      toast.error('Error finding nearby stores. Please try again.');
+      setNearbyStores([]); // Ensure empty state is shown
+    } finally {
+      setLoading(false);
     }
   };
 
