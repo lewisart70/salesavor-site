@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Address hardcoded image URLs identified by deployment agent and integrate new professional logos. Update color scheme to match the new blue/teal branding."
+user_problem_statement: "User reported that stores are not populating when they click 'Get Location' - they see 'Locating stores' but nothing happens. However, when main agent tested the same functionality, the stores DO appear correctly. Need to test the full location → stores flow to verify functionality and identify the root cause."
 
 backend:
   - task: "Backend functionality"
