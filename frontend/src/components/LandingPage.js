@@ -23,6 +23,19 @@ const LandingPage = ({ onGetStarted }) => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Hero Content */}
             <div className="text-center lg:text-left">
+              {/* App Icon + Brand */}
+              <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
+                <img 
+                  src={process.env.REACT_APP_LOGO_URL} 
+                  alt="SaleSavor App Icon" 
+                  className="h-16 w-16 rounded-2xl shadow-lg"
+                />
+                <div>
+                  <h2 className="text-2xl font-bold" style={{ color: '#2c5f2d' }}>SaleSavor</h2>
+                  <p className="text-sm" style={{ color: '#666666' }}>Smart Grocery Shopping</p>
+                </div>
+              </div>
+              
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: '#1a1a1a', lineHeight: '1.2' }}>
                 Save Money, Eat Better!
               </h1>
