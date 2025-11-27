@@ -1,19 +1,11 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { MapPin, ChefHat, ShoppingCart, Apple, Play, ArrowRight } from 'lucide-react';
+import { MapPin, ChefHat, ShoppingCart, Apple, Play } from 'lucide-react';
 
-const LandingPage = ({ onGetStarted, onPrivacyClick, onTermsClick, onCookiesClick }) => {
+const LandingPage = ({ onPrivacyClick, onTermsClick, onCookiesClick }) => {
   const appStoreUrl = process.env.REACT_APP_APP_STORE_URL || '#';
   const googlePlayUrl = process.env.REACT_APP_GOOGLE_PLAY_URL || '#';
-
-  const scrollToSales = () => {
-    if (onGetStarted) {
-      onGetStarted();
-    } else {
-      window.location.href = '/sales';
-    }
-  };
 
   return (
     <div className="min-h-screen" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
