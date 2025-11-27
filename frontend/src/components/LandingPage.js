@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { MapPin, ChefHat, ShoppingCart, Apple, Play, ArrowRight } from 'lucide-react';
 
-const LandingPage = ({ onGetStarted }) => {
+const LandingPage = ({ onGetStarted, onPrivacyClick, onTermsClick }) => {
   const appStoreUrl = process.env.REACT_APP_APP_STORE_URL || '#';
   const googlePlayUrl = process.env.REACT_APP_GOOGLE_PLAY_URL || '#';
 
