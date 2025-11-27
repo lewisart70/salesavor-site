@@ -247,18 +247,18 @@ const LandingPage = ({ onGetStarted }) => {
             <Button 
               className="flex items-center gap-3 px-8 py-6 text-lg font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all"
               style={{ backgroundColor: '#ffffff', color: '#2c5f2d' }}
-              onClick={() => window.open(appStoreUrl, '_blank')}
+              disabled
             >
               <Apple className="h-6 w-6" />
-              Download on App Store
+              Coming Soon - iOS
             </Button>
             <Button 
               className="flex items-center gap-3 px-8 py-6 text-lg font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all"
               style={{ backgroundColor: '#ffffff', color: '#2c5f2d' }}
-              onClick={() => window.open(googlePlayUrl, '_blank')}
+              disabled
             >
               <Play className="h-6 w-6" />
-              Get it on Google Play
+              Coming Soon - Android
             </Button>
           </div>
           
