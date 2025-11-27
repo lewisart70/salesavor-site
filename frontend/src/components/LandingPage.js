@@ -25,10 +25,10 @@ const LandingPage = ({ onGetStarted }) => {
             {/* Hero Content */}
             <div className="text-center lg:text-left">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: '#1a1a1a', lineHeight: '1.2' }}>
-                Save $200+ Every Month on Groceries
+                Save Money, Eat Better!
               </h1>
               <p className="text-xl md:text-2xl mb-8 leading-relaxed" style={{ color: '#666666' }}>
-                AI-powered recipe suggestions based on weekly sales from Canadian grocery stores
+                Smart Grocery Shopping Made Easy - Find the best deals and get personalized recipe suggestions
               </p>
               
               {/* App Store Buttons */}
