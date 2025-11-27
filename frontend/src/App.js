@@ -1234,7 +1234,7 @@ const App = () => {
                 onClick={() => {
                   setCurrentStep('location');
                   setSelectedRecipes([]);
-                  setGeneratedRecipes([]);
+                  setRecipes([]);
                   setGroceryList(null);
                 }}
                 variant="outline"
