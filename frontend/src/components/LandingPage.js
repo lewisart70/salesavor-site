@@ -273,11 +273,16 @@ const LandingPage = ({ onGetStarted }) => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Left Column */}
             <div>
-              <img 
-                src={process.env.REACT_APP_LOGO_URL} 
-                alt="SaleSavor Logo" 
-                className="h-8 mb-4"
-              />
+              <div className="flex items-center gap-3 mb-4">
+                <img 
+                  src={process.env.REACT_APP_LOGO_URL} 
+                  alt="SaleSavor App Icon" 
+                  className="h-10 w-10 rounded-xl"
+                />
+                <span className="text-xl font-bold" style={{ color: '#ffffff' }}>
+                  SaleSavor
+                </span>
+              </div>
               <p style={{ color: '#ffffff', opacity: 0.8 }}>
                 © 2025 SaleSavor. All rights reserved.
               </p>
