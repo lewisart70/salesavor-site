@@ -157,21 +157,6 @@ const LandingPage = ({ onGetStarted }) => {
         </div>
       </section>
 
-      {/* AdSense Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#f5f5f5' }}>
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-4">
-            <span className="text-sm" style={{ color: '#666666' }}>Advertisement</span>
-          </div>
-          <AdSenseAd 
-            adSlot="1234567890"
-            adFormat="auto"
-            style={{ minHeight: '250px' }}
-            className="rounded-xl overflow-hidden"
-          />
-        </div>
-      </section>
-
       {/* How It Works Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="max-w-7xl mx-auto">
