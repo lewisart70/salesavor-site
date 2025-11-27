@@ -18,20 +18,33 @@ import './App.css';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-const Home = () => {
+import LandingPage from './components/LandingPage';
+
+const App = () => {
+  const [currentView, setCurrentView] = useState('landing'); // 'landing' or 'app'
+  const [currentStep, setCurrentStep] = useState('location');
   const [userLocation, setUserLocation] = useState(null);
   const [nearbyStores, setNearbyStores] = useState([]);
   const [selectedStore, setSelectedStore] = useState(null);
   const [saleItems, setSaleItems] = useState([]);
-  const [generatedRecipes, setGeneratedRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   const [selectedRecipes, setSelectedRecipes] = useState([]);
   const [groceryList, setGroceryList] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [currentStep, setCurrentStep] = useState('location');
-  const [showProfile, setShowProfile] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
   const [emailAddress, setEmailAddress] = useState('');
   const [emailLoading, setEmailLoading] = useState(false);
+
+  // Check URL to determine view
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path === '/sales' || path.includes('/app')) {
+      setCurrentView('app');
+    } else {
+      setCurrentView('landing');
+    }
+  }, []);
 
   // Get user's current location
   const getCurrentLocation = async () => {
