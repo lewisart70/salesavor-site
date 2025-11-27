@@ -71,17 +71,31 @@ const LandingPage = ({ onGetStarted }) => {
               </div>
             </div>
             
-            {/* Hero Image */}
+            {/* Hero Image - App Screenshots */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
+                {/* Main hero screenshot */}
                 <img 
-                  src={process.env.REACT_APP_HERO_IMAGE_URL} 
-                  alt="SaleSavor Mobile App" 
-                  className="w-80 h-96 object-cover rounded-3xl shadow-2xl"
-                  style={{ borderRadius: '12px' }}
+                  src={process.env.REACT_APP_HERO_SCREENSHOT} 
+                  alt="SaleSavor Mobile App Welcome Screen" 
+                  className="w-72 h-auto rounded-3xl shadow-2xl border-4 border-white"
+                  style={{ borderRadius: '24px' }}
                 />
-                {/* App mockup overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-3xl"></div>
+                
+                {/* Floating secondary screenshots */}
+                <img 
+                  src={process.env.REACT_APP_STORES_SCREENSHOT}
+                  alt="Shopping List Screen" 
+                  className="absolute -right-8 top-16 w-48 h-auto rounded-2xl shadow-xl border-2 border-white opacity-90"
+                  style={{ borderRadius: '16px', transform: 'rotate(8deg)' }}
+                />
+                
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_grocery-saver-4/artifacts/h0swgs35_app6.JPG"
+                  alt="Recipe Details" 
+                  className="absolute -left-6 bottom-8 w-44 h-auto rounded-2xl shadow-xl border-2 border-white opacity-85"
+                  style={{ borderRadius: '16px', transform: 'rotate(-5deg)' }}
+                />
               </div>
             </div>
           </div>
