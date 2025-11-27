@@ -880,19 +880,6 @@ const App = () => {
               ))}
             </div>
             
-            {/* AdSense In-Feed Ad */}
-            <div className="mb-8 max-w-4xl mx-auto">
-              <div className="text-center mb-2">
-                <span className="text-xs text-gray-500">Advertisement</span>
-              </div>
-              <AdSenseAd 
-                adSlot="9876543210"
-                adFormat="fluid"
-                adLayout="in-article"
-                style={{ minHeight: '200px' }}
-                className="bg-gray-50 rounded-lg p-4"
-              />
-            </div>
             <div className="text-center mt-8">
               <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center mb-3">
