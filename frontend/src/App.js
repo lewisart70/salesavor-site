@@ -469,7 +469,11 @@ const App = () => {
 
   // Show landing page or main app
   if (currentView === 'landing') {
-    return <LandingPage onGetStarted={() => setCurrentView('app')} />;
+    return <LandingPage 
+      onGetStarted={() => setCurrentView('app')} 
+      onPrivacyClick={() => setCurrentView('privacy')}
+      onTermsClick={() => setCurrentView('terms')}
+    />;
   }
 
   if (currentView === 'privacy') {
