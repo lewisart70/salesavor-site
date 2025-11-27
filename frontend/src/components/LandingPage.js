@@ -143,7 +143,7 @@ const LandingPage = ({ onGetStarted, onPrivacyClick, onTermsClick, onCookiesClic
             {/* Feature 2 */}
             <Card className="text-center p-8 h-full shadow-lg hover:shadow-xl transition-shadow" style={{ borderRadius: '12px' }}>
               <CardContent className="p-0">
-                <div className="text-6xl mb-6">🤖</div>
+                <div className="text-6xl mb-6">👨‍🍳</div>
                 <h3 className="text-2xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
                   Personalized Recipes
                 </h3>
