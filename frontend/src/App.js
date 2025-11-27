@@ -16,6 +16,7 @@ import AdSenseAd from './components/AdSenseAd';
 import LandingPage from './components/LandingPage';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import CookiePolicy from './components/CookiePolicy';
 import './App.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
