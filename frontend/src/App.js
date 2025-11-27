@@ -47,6 +47,8 @@ const App = () => {
       setCurrentView('privacy');
     } else if (path === '/terms-of-service') {
       setCurrentView('terms');
+    } else if (path === '/cookie-policy') {
+      setCurrentView('cookies');
     } else {
       setCurrentView('landing');
     }
