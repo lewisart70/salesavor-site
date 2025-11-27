@@ -304,9 +304,13 @@ const LandingPage = ({ onGetStarted }) => {
             {/* Center Column */}
             <div>
               <div className="space-y-2">
-                <a href="/privacy-policy" className="block hover:underline" style={{ color: '#ffffff', opacity: 0.8 }}>
+                <button 
+                  onClick={() => window.location.href = '/privacy-policy'}
+                  className="block hover:underline text-left" 
+                  style={{ color: '#ffffff', opacity: 0.8, background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer' }}
+                >
                   Privacy Policy
-                </a>
+                </button>
                 <a href="/terms-of-service" className="block hover:underline" style={{ color: '#ffffff', opacity: 0.8 }}>
                   Terms of Service
                 </a>
