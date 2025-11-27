@@ -305,15 +305,19 @@ const LandingPage = ({ onGetStarted, onPrivacyClick, onTermsClick }) => {
             <div>
               <div className="space-y-2">
                 <button 
-                  onClick={() => window.location.href = '/privacy-policy'}
-                  className="block hover:underline text-left" 
+                  onClick={onPrivacyClick}
+                  className="block hover:underline text-left"
                   style={{ color: '#ffffff', opacity: 0.8, background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer' }}
                 >
                   Privacy Policy
                 </button>
-                <a href="/terms-of-service" className="block hover:underline" style={{ color: '#ffffff', opacity: 0.8 }}>
+                <button 
+                  onClick={onTermsClick}
+                  className="block hover:underline text-left"
+                  style={{ color: '#ffffff', opacity: 0.8, background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer' }}
+                >
                   Terms of Service
-                </a>
+                </button>
                 <a href="#" className="termly-display-preferences block hover:underline" style={{ color: '#ffffff', opacity: 0.8 }}>
                   Cookie Preferences
                 </a>
