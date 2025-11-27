@@ -1337,16 +1337,6 @@ const App = () => {
   );
 };
 
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-}
+// Remove the old App function since we renamed Home to App
 
 export default App;
