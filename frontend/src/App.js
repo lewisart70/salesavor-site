@@ -559,7 +559,7 @@ const App = () => {
               { key: 'location', label: 'Location', icon: MapPin, completed: userLocation !== null },
               { key: 'stores', label: 'Stores', icon: ShoppingCart, completed: nearbyStores.length > 0 },
               { key: 'sales', label: 'Sales', icon: DollarSign, completed: saleItems.length > 0 },
-              { key: 'recipes', label: 'Recipes', icon: ChefHat, completed: generatedRecipes.length > 0 },
+              { key: 'recipes', label: 'Recipes', icon: ChefHat, completed: recipes.length > 0 },
               { key: 'groceryList', label: 'List', icon: ShoppingCart, completed: groceryList !== null }
             ].map(({ key, label, icon: Icon, completed }) => {
               const isAccessible = completed || currentStep === key || 
