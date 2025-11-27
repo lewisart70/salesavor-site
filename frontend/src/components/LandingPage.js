@@ -318,9 +318,13 @@ const LandingPage = ({ onGetStarted, onPrivacyClick, onTermsClick, onCookiesClic
                 >
                   Terms of Service
                 </button>
-                <a href="#" className="termly-display-preferences block hover:underline" style={{ color: '#ffffff', opacity: 0.8 }}>
-                  Cookie Preferences
-                </a>
+                <button 
+                  onClick={onCookiesClick}
+                  className="block hover:underline text-left"
+                  style={{ color: '#ffffff', opacity: 0.8, background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer' }}
+                >
+                  Cookie Policy
+                </button>
               </div>
             </div>
             
