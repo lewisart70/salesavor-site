@@ -4,12 +4,16 @@ import { Card, CardContent } from './ui/card';
 import { MapPin, ChefHat, ShoppingCart, Apple, Play, ArrowRight } from 'lucide-react';
 import AdSenseAd from './AdSenseAd';
 
-const LandingPage = () => {
+const LandingPage = ({ onGetStarted }) => {
   const appStoreUrl = process.env.REACT_APP_APP_STORE_URL || '#';
   const googlePlayUrl = process.env.REACT_APP_GOOGLE_PLAY_URL || '#';
 
   const scrollToSales = () => {
-    window.location.href = '/sales';
+    if (onGetStarted) {
+      onGetStarted();
+    } else {
+      window.location.href = '/sales';
+    }
   };
 
   return (
