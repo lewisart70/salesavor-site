@@ -908,7 +908,7 @@ const App = () => {
         )}
 
         {/* Recipes Step - With Recipes */}
-        {currentStep === 'recipes' && generatedRecipes.length > 0 && (
+        {currentStep === 'recipes' && recipes.length > 0 && (
           <div data-testid="recipes-section">
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-emerald-800">
