@@ -62,25 +62,6 @@ const LandingPage = ({ onGetStarted, onPrivacyClick, onTermsClick, onCookiesClic
                   Coming Soon - Android
                 </Button>
               </div>
-              
-              {/* Browse Sales Link */}
-              <div className="flex flex-col sm:flex-row gap-4 items-center">
-                <button 
-                  onClick={scrollToSales}
-                  className="inline-flex items-center gap-2 text-lg font-medium hover:underline transition-colors"
-                  style={{ color: '#3030F1' }}
-                >
-                  Try the web app <ArrowRight className="h-5 w-5" />
-                </button>
-                <span style={{ color: '#666666' }}>|</span>
-                <button 
-                  onClick={scrollToSales}
-                  className="inline-flex items-center gap-2 text-lg font-medium hover:underline transition-colors"
-                  style={{ color: '#3030F1' }}
-                >
-                  Browse this week's sales <ArrowRight className="h-5 w-5" />
-                </button>
-              </div>
             </div>
             
             {/* Hero Image - App Screenshots */}
