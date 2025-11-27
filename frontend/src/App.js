@@ -469,6 +469,10 @@ const App = () => {
     return <LandingPage onGetStarted={() => setCurrentView('app')} />;
   }
 
+  if (currentView === 'privacy') {
+    return <PrivacyPolicy onBack={() => setCurrentView('landing')} />;
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-teal-50">
       {/* Hero Section */}
