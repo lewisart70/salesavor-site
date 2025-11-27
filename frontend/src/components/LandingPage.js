@@ -325,6 +325,13 @@ const LandingPage = ({ onGetStarted, onPrivacyClick, onTermsClick, onCookiesClic
                 >
                   Cookie Policy
                 </button>
+                <a 
+                  href="#" 
+                  className="termly-display-preferences block hover:underline text-left"
+                  style={{ color: '#ffffff', opacity: 0.8 }}
+                >
+                  Consent Preferences
+                </a>
               </div>
             </div>
             
