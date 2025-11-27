@@ -13,12 +13,11 @@ import { MapPin, ShoppingCart, ChefHat, DollarSign, Clock, Users, User, Settings
 import { Toaster } from './components/ui/sonner';
 import { toast } from 'sonner';
 import AdSenseAd from './components/AdSenseAd';
+import LandingPage from './components/LandingPage';
 import './App.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
-
-import LandingPage from './components/LandingPage';
 
 const App = () => {
   const [currentView, setCurrentView] = useState('landing'); // 'landing' or 'app'
