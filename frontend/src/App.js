@@ -41,6 +41,8 @@ const App = () => {
     const path = window.location.pathname;
     if (path === '/sales' || path.includes('/app')) {
       setCurrentView('app');
+    } else if (path === '/privacy-policy') {
+      setCurrentView('privacy');
     } else {
       setCurrentView('landing');
     }
