@@ -22,7 +22,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const App = () => {
-  const [currentView, setCurrentView] = useState('landing'); // 'landing', 'app', or 'privacy'
+  const [currentView, setCurrentView] = useState('landing'); // 'landing', 'app', 'privacy', or 'terms'
   const [currentStep, setCurrentStep] = useState('location');
   const [userLocation, setUserLocation] = useState(null);
   const [nearbyStores, setNearbyStores] = useState([]);
