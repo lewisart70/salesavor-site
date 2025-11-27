@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { MapPin, ChefHat, ShoppingCart, Apple, Play, ArrowRight } from 'lucide-react';
-import AdSenseAd from './AdSenseAd';
 
 const LandingPage = ({ onGetStarted }) => {
   const appStoreUrl = process.env.REACT_APP_APP_STORE_URL || '#';
