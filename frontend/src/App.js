@@ -14,13 +14,14 @@ import { Toaster } from './components/ui/sonner';
 import { toast } from 'sonner';
 import AdSenseAd from './components/AdSenseAd';
 import LandingPage from './components/LandingPage';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import './App.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const App = () => {
-  const [currentView, setCurrentView] = useState('landing'); // 'landing' or 'app'
+  const [currentView, setCurrentView] = useState('landing'); // 'landing', 'app', or 'privacy'
   const [currentStep, setCurrentStep] = useState('location');
   const [userLocation, setUserLocation] = useState(null);
   const [nearbyStores, setNearbyStores] = useState([]);
