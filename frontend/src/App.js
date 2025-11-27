@@ -44,6 +44,8 @@ const App = () => {
       setCurrentView('app');
     } else if (path === '/privacy-policy') {
       setCurrentView('privacy');
+    } else if (path === '/terms-of-service') {
+      setCurrentView('terms');
     } else {
       setCurrentView('landing');
     }
