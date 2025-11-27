@@ -168,7 +168,7 @@ const App = () => {
         servings: userProfile?.household_size || 4,
         profile_id: userProfile?.id
       });
-      setGeneratedRecipes(response.data);
+      setRecipes(response.data);
       setCurrentStep('recipes');
       toast.success('Recipes generated based on current sales and your preferences!');
     } catch (error) {
