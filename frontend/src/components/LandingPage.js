@@ -312,7 +312,6 @@ const LandingPage = ({ onPrivacyClick, onTermsClick, onCookiesClick }) => {
             <div>
               <div className="space-y-2" style={{ color: '#ffffff', opacity: 0.8 }}>
                 <p>Contact: info@salesavor.ca</p>
-                <p>Phone: 1-613-246-5411</p>
                 <p>Kingston, Ontario, Canada</p>
               </div>
             </div>
