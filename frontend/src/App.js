@@ -1033,7 +1033,7 @@ const App = () => {
         )}
 
         {/* Recipes Step - No Recipes Yet */}
-        {currentStep === 'recipes' && generatedRecipes.length === 0 && (
+        {currentStep === 'recipes' && recipes.length === 0 && (
           <div data-testid="recipes-placeholder" className="text-center">
             <div className="max-w-2xl mx-auto">
               <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 border border-emerald-200 shadow-sm">
