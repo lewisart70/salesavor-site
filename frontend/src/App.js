@@ -476,6 +476,7 @@ const App = () => {
       onGetStarted={() => setCurrentView('app')} 
       onPrivacyClick={() => setCurrentView('privacy')}
       onTermsClick={() => setCurrentView('terms')}
+      onCookiesClick={() => setCurrentView('cookies')}
     />;
   }
 
