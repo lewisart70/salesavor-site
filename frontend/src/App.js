@@ -933,7 +933,7 @@ const App = () => {
               </div>
             </div>
             <div className="grid lg:grid-cols-2 gap-6 mb-8">
-              {generatedRecipes.map((recipe) => (
+              {recipes.map((recipe) => (
                 <Card 
                   key={recipe.id} 
                   className={`cursor-pointer transition-all ${
