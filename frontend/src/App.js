@@ -578,7 +578,7 @@ const App = () => {
                         // Auto-load sales when navigating to sales tab
                         getStoreSales(selectedStore.id);
                       }
-                      if (key === 'recipes' && saleItems.length > 0 && generatedRecipes.length === 0) {
+                      if (key === 'recipes' && saleItems.length > 0 && recipes.length === 0) {
                         // Auto-generate recipes when navigating to recipes tab
                         generateRecipes();
                       }
