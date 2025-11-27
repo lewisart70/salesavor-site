@@ -172,7 +172,13 @@ const LandingPage = ({ onGetStarted }) => {
           <div className="grid md:grid-cols-3 gap-12">
             {/* Step 1 */}
             <div className="text-center">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-6" 
+              <img 
+                src={process.env.REACT_APP_PROFILE_SCREENSHOT}
+                alt="Set Your Preferences" 
+                className="w-48 h-auto mx-auto mb-6 rounded-xl shadow-lg"
+                style={{ borderRadius: '16px' }}
+              />
+              <div className="w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold text-white mx-auto mb-4" 
                    style={{ backgroundColor: '#2c5f2d' }}>
                 1
               </div>
@@ -186,7 +192,13 @@ const LandingPage = ({ onGetStarted }) => {
             
             {/* Step 2 */}
             <div className="text-center">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-6" 
+              <img 
+                src="https://customer-assets.emergentagent.com/job_grocery-saver-4/artifacts/tmd2be6u_app7.JPG"
+                alt="See What's On Sale" 
+                className="w-48 h-auto mx-auto mb-6 rounded-xl shadow-lg"
+                style={{ borderRadius: '16px' }}
+              />
+              <div className="w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold text-white mx-auto mb-4" 
                    style={{ backgroundColor: '#2c5f2d' }}>
                 2
               </div>
@@ -200,7 +212,13 @@ const LandingPage = ({ onGetStarted }) => {
             
             {/* Step 3 */}
             <div className="text-center">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-6" 
+              <img 
+                src="https://customer-assets.emergentagent.com/job_grocery-saver-4/artifacts/70a24v7g_app8.JPG"
+                alt="Get Recipe Ideas" 
+                className="w-48 h-auto mx-auto mb-6 rounded-xl shadow-lg"
+                style={{ borderRadius: '16px' }}
+              />
+              <div className="w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold text-white mx-auto mb-4" 
                    style={{ backgroundColor: '#2c5f2d' }}>
                 3
               </div>
