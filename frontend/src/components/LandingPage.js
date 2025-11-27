@@ -108,7 +108,7 @@ const LandingPage = ({ onPrivacyClick, onTermsClick, onCookiesClick }) => {
                   Discover Local Sales
                 </h3>
                 <p className="text-lg leading-relaxed" style={{ color: '#666666' }}>
-                  Automatically find weekly sales from Loblaws, Sobeys, Metro, and Walmart near you
+                  Automatically find weekly sales from grocery stores near you
                 </p>
               </CardContent>
             </Card>
