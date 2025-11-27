@@ -462,6 +462,11 @@ const App = () => {
     );
   };
 
+  // Show landing page or main app
+  if (currentView === 'landing') {
+    return <LandingPage onGetStarted={() => setCurrentView('app')} />;
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-teal-50">
       {/* Hero Section */}
