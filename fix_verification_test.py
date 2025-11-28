@@ -24,7 +24,7 @@ def test_backend_still_working():
     
     try:
         response = requests.post(
-            "https://grocery-savings-1.preview.emergentagent.com/api/stores/nearby",
+            "https://mobile-preview-10.preview.emergentagent.com/api/stores/nearby",
             json=location_data,
             headers={'Content-Type': 'application/json'},
             timeout=10
@@ -49,7 +49,7 @@ def test_frontend_accessibility():
     
     try:
         response = requests.get(
-            "https://grocery-savings-1.preview.emergentagent.com",
+            "https://mobile-preview-10.preview.emergentagent.com",
             timeout=10
         )
         
