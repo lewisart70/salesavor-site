@@ -133,7 +133,9 @@ const LandingPage = ({ onPrivacyClick, onTermsClick, onCookiesClick }) => {
             {/* Feature 3 */}
             <Card className="text-center p-8 h-full shadow-lg hover:shadow-xl transition-shadow" style={{ borderRadius: '12px' }}>
               <CardContent className="p-0">
-                <div className="text-6xl mb-6">📝</div>
+                <div className="flex justify-center mb-6">
+                  <ShoppingCart className="w-16 h-16" style={{ color: '#2c5f2d' }} />
+                </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
                   Save Time & Money
                 </h3>
